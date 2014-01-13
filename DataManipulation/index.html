@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Manipulation</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Data Manipulation">
+  <meta name="author" content="Ben Weinstein">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "libraries/widgets/quiz/css/jquery-quiz.css">
+<link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>Data Manipulation</h1>
+        <h2>Beginning with Data Frames</h2>
+        <p>Ben Weinstein<br/></p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h1>What did we learn last time?</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r"># Draw a 100 points from a random normal of 100 with mean =6, sd =7
+x &lt;- rnorm(100, 6, 7)
+# view distribution
+hist(x)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+<pre><code class="r"># sample 5 without replacement
+sample(x, 5)
+</code></pre>
+
+<pre><code>## [1]  1.856  8.253  8.575 18.531  5.367
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h1>Beyond Vectors - Beginning with Data frames</h1>
+  </hgroup>
+  <article>
+    <p>A data frame is a very important data type in R. It&#39;s pretty much the de facto data structure for most tabular data and what we use for statistics. Data frames can have additional attributes such as rownames() and colnames(). This can be useful for annotating data.</p>
+
+<p><strong>Useful functions</strong>  </p>
+
+
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li>1. head() - see first 5 rows</li>
+<li>2. tail() - see last 5 rows</li>
+<li>3. dim() - see dimensions</li>
+</ul>
+
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>4. nrow() - number of rows</li>
+<li>5. ncol() - number of columns</li>
+<li>6. str() - structure of the object</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <p>Data frames are usually read in from file, but R comes with many practice datasets. We will use the iris dataset, famously used by Fisher in 1936 (<a href="http://en.wikipedia.org/wiki/Iris_flower_data_set">http://en.wikipedia.org/wiki/Iris_flower_data_set</a>)</p>
+
+<h1>head(iris)</h1>
+
+<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Thu Dec 12 16:29:10 2013 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 3.00 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 1.30 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 3.10 </TD> <TD align="right"> 1.50 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 3.60 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD align="right"> 5.40 </TD> <TD align="right"> 3.90 </TD> <TD align="right"> 1.70 </TD> <TD align="right"> 0.40 </TD> <TD> setosa </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <blockquote>
+<p>Try the basic dataframe functions:</p>
+
+<ul>
+<li>1. head()<br></li>
+<li>2. tail() - see last 5 rows</li>
+<li>3. dim() - see dimensions</li>
+<li>4. nrow() - number of rows</li>
+<li>5. ncol() - number of columns</li>
+<li>6. str() - structure of the object</li>
+</ul>
+
+
+</div>
+<div style='float:right;width:48%;'>
+  <ol class = "build">
+<li>How many rows does the data have?</li>
+<li>How many columns? What are the column names?</li>
+<li>Using the str function, how many species are in the data?</li>
+<li>What classes are each of the columns?</li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Dataframe syntax and subsetting</h2>
+  </hgroup>
+  <article>
+    <p>R has many powerful subset operators and mastering them will allow you to easily perform complex operation on any kind of dataset. Allows you to manipulate data very succinctly. Dataframes are akin to a series of vectors combined into a tabular structure. </p>
+
+<p><strong>head(iris)</strong></p>
+
+<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Thu Dec 12 16:29:10 2013 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 3.00 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 1.30 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 3.10 </TD> <TD align="right"> 1.50 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 3.60 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD align="right"> 5.40 </TD> <TD align="right"> 3.90 </TD> <TD align="right"> 1.70 </TD> <TD align="right"> 0.40 </TD> <TD> setosa </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Dataframes syntax</h2>
+  </hgroup>
+  <article>
+    <p>Use the $ sign to call a column</p>
+
+<pre><code class="r">x &lt;- iris$Sepal.Length
+head(x)
+</code></pre>
+
+<pre><code>## [1] 5.1 4.9 4.7 4.6 5.0 5.4
+</code></pre>
+
+<pre><code class="r">
+y &lt;- iris[, &quot;Sepal.Length&quot;]
+head(y)
+</code></pre>
+
+<pre><code>## [1] 5.1 4.9 4.7 4.6 5.0 5.4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Indexing</h2>
+  </hgroup>
+  <article>
+    <p>Indexing a dataframe is given by nameofdf[rows,columns]</p>
+
+<pre><code class="r">colnames(iris)
+</code></pre>
+
+<pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot; 
+## [5] &quot;Species&quot;
+</code></pre>
+
+<pre><code class="r"># Identical to iris$Sepal.Length
+SL &lt;- iris[, &quot;Sepal.Length&quot;]
+head(SL)
+</code></pre>
+
+<pre><code>## [1] 5.1 4.9 4.7 4.6 5.0 5.4
+</code></pre>
+
+<pre><code class="r">SL2 &lt;- iris[, 1]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h1>Dataframes can be indexed for both rows and columns</h1>
+  </hgroup>
+  <article>
+    <p>Get all rows and the first two columns
+<strong>a&lt;-iris[,1:2]</strong></p>
+
+<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Thu Dec 12 16:29:10 2013 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 3.00 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 3.20 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 3.10 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 3.60 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD align="right"> 5.40 </TD> <TD align="right"> 3.90 </TD> </TR>
+   </TABLE>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>What is the 9th entry of the Sepal.Width column?</li>
+<li>How would you get all entries for the 17th row?</li>
+<li>Return an object with the 1 4 and 7 rows of the dataframe?</li>
+<li>Use the seq command to get all odd rows in the dataset?</li>
+<li>What happens when you use negative numbers?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Using logical statements</h2>
+  </hgroup>
+  <article>
+    <p>An extremely helpful tool is to subset your data using logic rather than an index. Let&#39;s begin with continious numeric data.</p>
+
+<pre><code class="r"># Grab the Sepal.Width
+x &lt;- iris$Petal.Width
+# Histogram
+hist(x)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Subset Using Statements</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r"># Which values are greater than 1?
+x &lt;- iris$Petal.Width
+logi &lt;- x &gt; 1
+
+# Return all columns based on iris$Petal.Width
+a &lt;- iris[logi, ]
+</code></pre>
+
+<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Thu Dec 12 16:29:10 2013 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
+  <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD align="right"> 6.40 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.50 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 53 </TD> <TD align="right"> 6.90 </TD> <TD align="right"> 3.10 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 54 </TD> <TD align="right"> 5.50 </TD> <TD align="right"> 2.30 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 55 </TD> <TD align="right"> 6.50 </TD> <TD align="right"> 2.80 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 56 </TD> <TD align="right"> 5.70 </TD> <TD align="right"> 2.80 </TD> <TD align="right"> 4.50 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h1>More Subsets</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r"># Return all columns based on iris$Petal.Width values are greater than 1?
+a &lt;- iris[iris$Petal.Width &gt; 1, ]
+</code></pre>
+
+<pre><code class="r">a &lt;- iris[, 1:2]
+# Return the same column as was subsetted.
+head(x[logi])
+</code></pre>
+
+<pre><code>## [1] 1.4 1.5 1.5 1.3 1.5 1.3
+</code></pre>
+
+<p>Return a different column based on the subset</p>
+
+<pre><code class="r"># Return all values in Sepal.Length where Sepal.Width is greater than 1.
+head(iris[logi, &quot;Petal.Length&quot;])
+</code></pre>
+
+<pre><code>## [1] 4.7 4.5 4.9 4.0 4.6 4.5
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Why is iris[iris&gt;3,] a nonsensical command? </li>
+<li>What about iris[iris$Sepal.Length &gt;3]? </li>
+<li>Create a histogram of petal lengths for the entire data</li>
+<li>Subset the data for values greater than two</li>
+<li>Create a histogram of your new data</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Other types of logical statements </h2>
+  </hgroup>
+  <article>
+    <p>Many different types of logical statements can be used to subset data.</p>
+
+<p>For all types of data, if we want a specific value/character/factor we use ==</p>
+
+<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Thu Dec 12 16:29:11 2013 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
+  <TR> <TD align="right"> 54 </TD> <TD align="right"> 5.50 </TD> <TD align="right"> 2.30 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 63 </TD> <TD align="right"> 6.00 </TD> <TD align="right"> 2.20 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.00 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 72 </TD> <TD align="right"> 6.10 </TD> <TD align="right"> 2.80 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 90 </TD> <TD align="right"> 5.50 </TD> <TD align="right"> 2.50 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 93 </TD> <TD align="right"> 5.80 </TD> <TD align="right"> 2.60 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.20 </TD> <TD> versicolor </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h1>Get only records from the species versicolor</h1>
+  </hgroup>
+  <article>
+    <!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Thu Dec 12 16:29:11 2013 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
+  <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD align="right"> 6.40 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.50 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 53 </TD> <TD align="right"> 6.90 </TD> <TD align="right"> 3.10 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 54 </TD> <TD align="right"> 5.50 </TD> <TD align="right"> 2.30 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 55 </TD> <TD align="right"> 6.50 </TD> <TD align="right"> 2.80 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 56 </TD> <TD align="right"> 5.70 </TD> <TD align="right"> 2.80 </TD> <TD align="right"> 4.50 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h1>Logical statments </h1>
+  </hgroup>
+  <article>
+    <p>Combined using &amp; (and) if you want both statements to be true, or | (or) if you want either statement to be true.</p>
+
+<pre><code class="r">subsetX &lt;- iris[iris$Petal.Length &gt; 4 &amp; iris$Species == &quot;versicolor&quot;, ]
+</code></pre>
+
+<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Thu Dec 12 16:29:11 2013 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
+  <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD align="right"> 6.40 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.50 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 53 </TD> <TD align="right"> 6.90 </TD> <TD align="right"> 3.10 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 55 </TD> <TD align="right"> 6.50 </TD> <TD align="right"> 2.80 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 1.50 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 56 </TD> <TD align="right"> 5.70 </TD> <TD align="right"> 2.80 </TD> <TD align="right"> 4.50 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
+  <TR> <TD align="right"> 57 </TD> <TD align="right"> 6.30 </TD> <TD align="right"> 3.30 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.60 </TD> <TD> versicolor </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <p>Explain in words each of the following logical statements</p>
+
+<ol>
+<li><p>iris[1:4,]</p></li>
+<li><p>iris[c(1:15,),c(1,3)]</p></li>
+<li><p>iris[iris$Species == &quot;setosa&quot;,&quot;Petal.Width&quot;]</p></li>
+<li><p>What happens when you add a ! before a logical statment, </p></li>
+</ol>
+
+<p><em>Hint</em> compare:
+iris[iris$Species == &quot;setosa&quot;,] with iris[!iris$Species == &quot;setosa&quot;,]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>What did we learn today?</h2>
+  </hgroup>
+  <article>
+    <h1>Today we covered basic data manipulation of dataframes in R</h1>
+
+<ol class = "build">
+<li><p>Properties of a Data frame</p></li>
+<li><p>Indexing columns </p></li>
+<li><p>Subsetting Data</p></li>
+<li><p>Logical Statements</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h1>Next time we will cover importing data, more subsetting and sampling, and introduction to bivariate plotting using ggplot.</h1>
+  </hgroup>
+  <article>
+    <p><img src="figure/unnamed-chunk-16.png" alt="plot of chunk unnamed-chunk-16"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<script src='libraries/widgets/quiz/js/jquery.quiz.js'></script>
+<script src='libraries/widgets/quiz/js/mustache.min.js'></script>
+<script type="text/javascript">
+ $('.quiz').find('li:has(em)').addClass('quiz-answer')
+ $('li.quiz-answer em').replaceWith(function(){
+   return $(this).contents()
+ })
+ $('.quiz').find('li').addClass('quiz-option')
+ $.quiz();
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
