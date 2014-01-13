@@ -1,4 +1,4 @@
-WorkSheet 2 - Distributions
+WorkSheet 2 - Distributions - *Answers*
 ========================================================
 
 Understanding your data is a critical step in analysis. Describe in words the following data types. Is it numeric? Continious? Bounded at 0? 
@@ -16,7 +16,7 @@ head(x)
 ```
 
 ```
-## [1]  0.6620  0.1180 -1.5360 -0.1358  0.2250  0.7439
+## [1]  0.03699 -0.98276  0.22013  0.49989 -0.48529 -1.13197
 ```
 
 
@@ -29,7 +29,7 @@ head(j)
 ```
 
 ```
-## [1] 3 0 0 0 0 1
+## [1] 0 1 0 2 1 0
 ```
 
 
@@ -42,7 +42,7 @@ head(g)
 ```
 
 ```
-## [1] 0 1 0 1 1 1
+## [1] 0 0 1 0 1 1
 ```
 
 
@@ -94,7 +94,7 @@ head(x)
 ```
 
 ```
-## [1] -1.8962  0.7391  1.9827 -0.6615 -0.6635 -1.3566
+## [1] -1.92568  0.01784 -0.73098 -0.82502 -0.32310 -0.31872
 ```
 
 ```r

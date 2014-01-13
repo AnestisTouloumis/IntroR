@@ -1,4 +1,4 @@
-WorkSheet 2 - Distributions
+WorkSheet 2 - Distributions - *Answers*
 ========================================================
 
 Understanding your data is a critical step in analysis. Describe in words the following data types. Is it numeric? Continious? Bounded at 0? 
