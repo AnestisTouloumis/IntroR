@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Distributions and Probability</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Distributions and Probability">
+  <meta name="author" content="Ben Weinstein">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "libraries/widgets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href = "libraries/widgets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>Distributions and Probability</h1>
+        <h2></h2>
+        <p>Ben Weinstein<br/></p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h1>What did we learn last time?</h1>
+  </hgroup>
+  <article>
+    <ol class = "build">
+<li>The Basic Components of R and Rstudio</li>
+<li>Vectors and Basic Math</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h1>Review</h1>
+  </hgroup>
+  <article>
+    <p>What is the sum of (1 through 10 multiplied by two) plus (1 through 20 divided by three). </p>
+
+<p><em>Bonus</em>: What is the mean number of 1 through 10 and 1 through 20 when taken together.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h1>Distributions</h1>
+  </hgroup>
+  <article>
+    <p>Generating random samples from a normal distribution</p>
+
+<p>It is often very useful to be able to generate a sample from a specific distribution. To generate a sample of size 100 from a standard normal distribution (with mean 0 and standard deviation 1) we use the rnorm function. We only have to supply the n (sample size) argument since mean 0 and standard deviation 1 are the default values for the mean and stdev arguments.</p>
+
+<pre><code class="r">norm &lt;- rnorm(100)
+head(norm)
+</code></pre>
+
+<pre><code>## [1] -0.99115  0.16671 -0.08847  1.16380 -0.53200  0.93675
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Look up the rnorm function in help screen, what are three arguments?</li>
+<li>Draw 100 random numbers from a normal distribution with a mean of 3 and an sd of 2, assign it to an object &quot;a&quot;</li>
+<li>Find the mean number if your draw, how close was it to the true mean</li>
+<li>Using the ?? tool, lookup the function for standard deviation <em>Hint</em> the ?? tool should not include spaces in the query.</li>
+<li>Drawing on what we learned last time, if &quot;a&quot; is a vector of 100 random normal draws, what is the syntax to get the 13th number in the vector?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h1>Generating random samples from other distributions</h1>
+  </hgroup>
+  <article>
+    <p>R has many distributions in the base package, including all commonly used in biological analysis. Depending on the distribution, each function has its own set of parameter arguments. For example, the &#39;rpois&#39; function is the random number generator for the Poisson distribution and it has only the parameter argument lambda. The rbinom function is the random number generator for the binomial distribution and it takes two arguments: size and prob. The size argument specifies the number of Bernoulli trials and the prob argument specifies the probability of a success for each trial. </p>
+
+<p>For now, its sufficient to know that a possion distribution is commonly used for count data, and has only paramater lambda, which is both the expected mean and var</p>
+
+<p>Generating a random sample from a Poisson distribution with lambda=3</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Draw 100 values from a poisson with a lambda =3, assign it to an object a</li>
+<li>Draw 1000 values from a poisson with a lambda, assign it to an object b</li>
+<li>Find the means of both draws, what is the difference in means?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Other distribution functions</h2>
+  </hgroup>
+  <article>
+    <blockquote>
+<p>For each of the distributions there are <strong>four functions</strong> which will generate fundamental quantities of a distribution. Let&#39;s consider the normal distribution as an example. We have already given examples of the <strong>rnorm()</strong> function which will generate a random sample from a specific normal distribution. </p>
+
+<p>The <strong>dnorm()</strong> function will generate the density (or point) probability for a specific value for a normal distribution. This function is very useful for creating a plot of a density function of a distribution. In the list of the random number generator functions all the functions started with an &quot;r&quot;, similarly the density functions for all the distributions all start with a &quot;d&quot;. </p>
+
+<p>The other two functions <strong>pnorm()</strong>, and <strong>qnorm()</strong> will be covered during Biometry. </p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>What is the point probability for a -1.96 for a normal of mean =0, sd=1</li>
+<li>We want to make a sequence of numbers, based on a given interval, look up, using ??sequence, and find the function that does this. <em>Hint</em> it is in the base package</li>
+<li>Create a sequence beginning at 0 and ending at 4, with .2 intervals, save this as object x.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h1>An introduction to plotting - Univariate</h1>
+  </hgroup>
+  <article>
+    <p>Histograms are the most common univariate plot. Histograms place data into &quot;bins&quot;, and count the number of data falling into each bin. Bins are usually plotted as bars, with the x range on the x axis, and count on the y axis.</p>
+
+<pre><code class="r"># Draw a thousand random normal points
+pts &lt;- rnorm(1000)
+hist(pts)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+<h2>Histograms are an effective way of visualizing distributions</h2>
+
+<h2><strong>Try It!</strong></h2>
+
+<ol>
+<li><p>Draw 10 random normal points and plot a histogram, then 100, then 1000, what do you notice about the plot?</p></li>
+<li><p>Explore atleast one other distribution, look up ?distributions *Hint remember to use the r-nameofdistribution function to pull random samples</p></li>
+<li><p>Plot your new distribution and compare with your neighbor.</p></li>
+<li><p>Draw 1000 random normals with a mean of 0 and a sd of 1. Look at the hist help screen. How do you specify the size of the bin range? Try making bins from -4 to 4, with intervals of .01, .1, and 1. <em>Hint</em> Consider using the seq() in the &quot;breaks&quot;&quot; argument within hist().</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h1>Density plots</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">x &lt;- seq(0, 4, 0.01)
+dens &lt;- dnorm(x, 2, 0.5)
+plot(x, dnorm(dens, 2, 0.5), type = &quot;l&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <p>The base package has an immense number of plotting tools, let&#39;s look at the plot help screen</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Plot your density function. Label your axis, &quot;This is the x axis&quot;, &quot;This is the y axis&quot;</li>
+<li>Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h1>Very Brief Intro to Sampling</h1>
+  </hgroup>
+  <article>
+    <p>In R, it&#39;s very easy to take a random sample of numbers with the sample() command. Suppose we want to take a random sample of 20 numbers from a vector of 100?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h1>Sample without replacement</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">x &lt;- 1:100
+sample(x, 20)
+</code></pre>
+
+<pre><code>##  [1]  37  81  27  78  71  56  18  21  14  92   5   6  42 100  24  96  44
+## [18]  19  38  97
+</code></pre>
+
+<h1>Sample with replacement</h1>
+
+<pre><code class="r">x &lt;- 1:100
+sample(x, 20, replace = TRUE)
+</code></pre>
+
+<pre><code>##  [1] 27 82  2 89 28 68 99 22 76  1 61 11 70 59  9 53 36 66 52 36
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>What did we learn today?</h2>
+  </hgroup>
+  <article>
+    <ol class = "build">
+<li>Drawing from random normal distributions <em>rnorm()</em></li>
+<li>Histograms and Density Plots</li>
+<li>The sample() function</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<script src='libraries/widgets/bootstrap/js/bootstrap.min.js'></script>
+<script>  
+$(function (){ 
+  $("#example").popover(); 
+  $("[rel='tooltip']").tooltip(); 
+});  
+</script>  
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>

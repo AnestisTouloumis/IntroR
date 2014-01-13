@@ -1,0 +1,91 @@
+WorkSheet 2 - Distributions
+========================================================
+
+Understanding your data is a critical step in analysis. Describe in words the following data types. Is it numeric? Continious? Bounded at 0? 
+
+Don't yet worry about the distributions, the point is to recognize fundamental characteristics of data.
+
+Data Structure
+-----------
+> 1. Draw 1000 random normal points with mean of 0 and sd of 1
+
+```{r}
+x<-rnorm(1000,mean=0,sd=1)
+head(x)
+```
+
+> 2. Draw 1000 random Poisson points lambda=1
+
+```{r}
+j<-rpois(1000,lambda=1)
+head(j)
+```
+
+> 3. Draw 1000 random binomial points with prob =.5 (coin flip; ie size=1)
+
+```{r}
+g<-rbinom(1000,prob=.5,size=1)
+head(g)
+```
+
+Univariate Plotting
+---------
+
+> 4. Create a histogram of each distribution above.
+
+```{r}
+hist(x,main="rnorm(1000,mean=0,sd=1)")
+hist(j,main="rpois(1000,lambda=1)")
+hist(g,main="rbinom(1000,prob=.5,size=1)")
+```
+``
+
+> 5. Increase to just cut into 10 sections, see ?hist
+```{r}
+hist(x,col="red",breaks=10)
+```
+
+Fitting Distributions
+----------
+Using Curve, fit a histogram of your data with a distribution curve
+
+Following the example.
+
+```{r}
+x<-rnorm(100)
+head(x)
+hist(x,prob=TRUE)
+curve(dnorm(x,mean=mean(x),sd=sd(x)),add=TRUE,col="red")
+```
+
+What does the prob=TRUE argument do in histogram? Why is it needed?
+
+> 6. Fit questions 2 and 3 to their respective distributions.
+
+```{r}
+hist(j,prob=TRUE)
+curve(dpois(x,lambda=mean(j)),col="red",from=0,to=6,n=7,add=TRUE)
+```
+
+```{r}
+#
+hist(g,probability=TRUE)
+curve(dbinom(x,prob=.5,size=1)*10,col="red",add=TRUE)
+
+#That's awkward, do you know why!
+```
+
+
+> 7. Plot all distributions together, using the add=TRUE parameters, please color them seperately and make not of which distribution is which color. 
+
+Red is normal
+Blue is poisson
+Green is binomial
+
+```{r}
+#all at once,
+hist(x,col="red")
+hist(j,col="blue",add=TRUE)
+hist(g,col="green",add=TRUE)
+```
+
