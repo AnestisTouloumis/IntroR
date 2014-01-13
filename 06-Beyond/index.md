@@ -1,0 +1,337 @@
+---
+title       : Biometry and Beyond
+subtitle    : Skills and Best Practices 
+author      : Ben Weinstein
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+Last Time
+---------
+
+> 1. Data Exploration
+> 2. ggplot2
+
+---
+
+Writing functions in R
+--------------------------
+If you have to repeat the same few lines of code more than once, then you really need to write a *function*. Functions are a fundamental building block of R. You use them all the time in R and it's not that much harder to string functions together (or write entirely new ones from scratch) to do more.
+
+* R functions are objects just like anything else. 
+* By default, R function arguments are lazy - they're only evaluated if they're actually used:
+* Every call on a R object is almost always a function call.
+
+---
+
+Basic components of a function
+--------------------------------
+* The `body()`, the code inside the function.
+* The `formals()`, the "formal" argument list, which controls how you can call the function.
+* The `environment()`` which determines how variables referred to inside the function are found.
+* `args()` to list arguments.
+
+---
+
+Writing Functions
+=================
+
+
+```r
+f <- function(x) x
+f
+```
+
+```
+## function(x) x
+```
+
+```r
+
+formals(f)
+```
+
+```
+## $x
+```
+
+```r
+
+environment(f)
+```
+
+```
+## <environment: R_GlobalEnv>
+```
+
+
+---
+
+Functions and Environments
+==========================
+
+**Question: How do we delete this function from our environment?**
+
+Variables defined inside functions exist in a different environment than the global environment. However, if a function is not defined inside one, it will look one level above.
+
+---
+
+Example.
+=========
+
+
+```r
+x <- 2
+g <- function() {
+    y <- 1
+    c(x, y)
+}
+g()
+```
+
+```
+## [1] 2 1
+```
+
+
+---
+
+A first useful function.
+=========================
+
+
+```r
+
+first <- function(x, y) {
+    z <- x + y
+    return(z)
+}
+
+first(5, 7)
+```
+
+```
+## [1] 12
+```
+
+
+---
+
+**Try it!**
+----------
+*  1. Create a function that takes in two arguments, x and y, and computes the x^2 * y
+* 2 Create a function that takes in three arguments, and makes a vector from the result
+* 3. Create a function that counts the number of matching items. Hint: use %in% to create a logical statement
+
+---
+
+
+```r
+add <- function(a, b) {
+    return(a + b)
+}
+vector <- c(3, 4, 5, 6)
+
+add(vector[[1]], vector[[2]])
+```
+
+```
+## [1] 7
+```
+
+
+---
+
+What does this function return?
+===============================
+
+
+```r
+x <- 5
+f <- function() {
+    y <- 10
+    c(x = x, y = y)
+}
+f()
+```
+
+```
+##  x  y 
+##  5 10
+```
+
+
+---
+
+## Functions with pre defined values
+
+
+```r
+temp <- function(a = 1, b = 2) {
+    return(a + b)
+}
+
+temp()
+```
+
+```
+## [1] 3
+```
+
+```r
+temp(5, 6)
+```
+
+```
+## [1] 11
+```
+
+
+---
+
+**Try It!**
+----------
+
+* Write a function that takes in a vector and multiplies the sum of the vector by 10. Return a logical statement based on whether the sum is under 1000.
+* Write a function that calculates the mean of every column in a dataframe. Have it break gracefully if the column are not numbers, using class(x) == "numeric". Try your function on the iris dataset
+
+---
+
+Functions usually return the last value it computed
+====================================================
+
+
+```r
+f <- function(x) {
+    if (x < 10) {
+        0
+    } else {
+        10
+    }
+}
+f(5)
+```
+
+```
+## [1] 0
+```
+
+```r
+f(15)
+```
+
+```
+## [1] 10
+```
+
+---
+
+# Reproducable programming in R
+---------------------------------
+
+It's easy to generate reports dynamically in R.
+
+**Basic idea:** Write **data** + **software** + **documentation** (or in this case manuscripts, reports) together.
+
+---
+
+Analysis code is divided into text and code "chunks".
+=====================================================
+
+Literate programming involves with three main steps:  
+
+1. Parse the source document and separate code from narratives.
+2. Execute source code and return results.
+3. Mix results from the source code with the original narratives.
+
+---
+
+Why this is important?
+=============================
+Results from scientific research have to be reproducible to be trustworthy. We do not want a finding to be merely due to an isolated occurrence. Instill confidence, share data, results and scripts using github.
+
+---
+What is markdown?
+==================
+
+An incredibly simple semantic file format.Markdown makes it easy for even those without a web-publishing background to write any sort of text (including with links, lists, bullets, etc.) and have it displayed in a variety of formats. 
+
+* [Markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+* [Original markdown reference](http://daringfireball.net/projects/markdown/basics)
+
+---
+
+Creating a basic knitr document
+===============================
+
+In RStudio, choose new R Markdown file (easiest way)
+or create a new file and save it with extension `.Rmd`.
+
+<pre><code>
+
+```r
+# some R code
+```
+
+</code></pre>
+
+---
+Knitr
+--------
+
+Hit the Knit HTML button
+
+**What just happened?**
+
+knitr reads the Rmd file, finds and runs the code chunks identified by the backticks, and replaces it with the output of the functions. 
+
+---
+
+Knitr will auto make tables, graphs, and even slides.
+
+Everything in this course was made by typing into Rstudio and using knitr. Period. It is a powerful tool.
+
+---
+
+Version Control and Github
+--------------
+
+Make your life easier, safer, and more fun.
+
+* Setup a GitHub account here.
+* Download and install Rstudio.
+* Download and install the platform-specific version of Git (not GitHub), default options   work well.
+* Configure Git with global commands. I have found this step necessary both times I     ran through this process. Open up the bash version of Git and type the following:         
+
+git config global user.name your GitHub account name                                                     git config global user.email your email
+
+* Open Rstudio and set the path to Git executable. Go to Tools > Options > Git/SVN       
+
+---
+Make a repo on github.com
+==========================
+
+A repository is the location and name for all the files associated with a particular project. The first step is to log into your GitHub account and create a new repository. Make sure you check the box Initialize this repository with a README. 
+
+---
+Clone your repo
+================
+
+* Open Rstudio and go to Project > Create Project > Version Control > Git and paste the url in the github repo
+
+* Now do some work in your new R project and create and save some files. The next step is to commit your work  essentially making a copy of all of your script files (i.e., .R files) associated with the R project.
+
+*Commit your work, give it some description
+
+*push to the web.
+
+sleep easy.
+
+---
+
+Thank You
+----------

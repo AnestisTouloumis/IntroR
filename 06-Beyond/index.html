@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biometry and Beyond</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Biometry and Beyond">
+  <meta name="author" content="Ben Weinstein">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "libraries/widgets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href = "libraries/widgets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>Biometry and Beyond</h1>
+        <h2>Skills and Best Practices</h2>
+        <p>Ben Weinstein<br/></p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Last Time</h2>
+  </hgroup>
+  <article>
+    <ol class = "build">
+<li>Data Exploration</li>
+<li>ggplot2</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Writing functions in R</h2>
+  </hgroup>
+  <article>
+    <p>If you have to repeat the same few lines of code more than once, then you really need to write a <em>function</em>. Functions are a fundamental building block of R. You use them all the time in R and it&#39;s not that much harder to string functions together (or write entirely new ones from scratch) to do more.</p>
+
+<ul>
+<li>R functions are objects just like anything else. </li>
+<li>By default, R function arguments are lazy - they&#39;re only evaluated if they&#39;re actually used:</li>
+<li>Every call on a R object is almost always a function call.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Basic components of a function</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>The <code>body()</code>, the code inside the function.</li>
+<li>The <code>formals()</code>, the &quot;formal&quot; argument list, which controls how you can call the function.</li>
+<li>The <code>environment()</code>` which determines how variables referred to inside the function are found.</li>
+<li><code>args()</code> to list arguments.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h1>Writing Functions</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">f &lt;- function(x) x
+f
+</code></pre>
+
+<pre><code>## function(x) x
+</code></pre>
+
+<pre><code class="r">
+formals(f)
+</code></pre>
+
+<pre><code>## $x
+</code></pre>
+
+<pre><code class="r">
+environment(f)
+</code></pre>
+
+<pre><code>## &lt;environment: R_GlobalEnv&gt;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h1>Functions and Environments</h1>
+  </hgroup>
+  <article>
+    <p><strong>Question: How do we delete this function from our environment?</strong></p>
+
+<p>Variables defined inside functions exist in a different environment than the global environment. However, if a function is not defined inside one, it will look one level above.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h1>Example.</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">x &lt;- 2
+g &lt;- function() {
+    y &lt;- 1
+    c(x, y)
+}
+g()
+</code></pre>
+
+<pre><code>## [1] 2 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h1>A first useful function.</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">
+first &lt;- function(x, y) {
+    z &lt;- x + y
+    return(z)
+}
+
+first(5, 7)
+</code></pre>
+
+<pre><code>## [1] 12
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2><strong>Try it!</strong></h2>
+  </hgroup>
+  <article>
+    <ul>
+<li> 1. Create a function that takes in two arguments, x and y, and computes the x<sup>2</sup> * y</li>
+<li>2 Create a function that takes in three arguments, and makes a vector from the result</li>
+<li>3. Create a function that counts the number of matching items. Hint: use %in% to create a logical statement</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">add &lt;- function(a, b) {
+    return(a + b)
+}
+vector &lt;- c(3, 4, 5, 6)
+
+add(vector[[1]], vector[[2]])
+</code></pre>
+
+<pre><code>## [1] 7
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h1>What does this function return?</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">x &lt;- 5
+f &lt;- function() {
+    y &lt;- 10
+    c(x = x, y = y)
+}
+f()
+</code></pre>
+
+<pre><code>##  x  y 
+##  5 10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Functions with pre defined values</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">temp &lt;- function(a = 1, b = 2) {
+    return(a + b)
+}
+
+temp()
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
+
+<pre><code class="r">temp(5, 6)
+</code></pre>
+
+<pre><code>## [1] 11
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Write a function that takes in a vector and multiplies the sum of the vector by 10. Return a logical statement based on whether the sum is under 1000.</li>
+<li>Write a function that calculates the mean of every column in a dataframe. Have it break gracefully if the column are not numbers, using class(x) == &quot;numeric&quot;. Try your function on the iris dataset</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h1>Functions usually return the last value it computed</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">f &lt;- function(x) {
+    if (x &lt; 10) {
+        0
+    } else {
+        10
+    }
+}
+f(5)
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<pre><code class="r">f(15)
+</code></pre>
+
+<pre><code>## [1] 10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h1>Reproducable programming in R</h1>
+  </hgroup>
+  <article>
+    <hr>
+
+<p>It&#39;s easy to generate reports dynamically in R.</p>
+
+<p><strong>Basic idea:</strong> Write <strong>data</strong> + <strong>software</strong> + <strong>documentation</strong> (or in this case manuscripts, reports) together.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h1>Analysis code is divided into text and code &quot;chunks&quot;.</h1>
+  </hgroup>
+  <article>
+    <p>Literate programming involves with three main steps:  </p>
+
+<ol>
+<li>Parse the source document and separate code from narratives.</li>
+<li>Execute source code and return results.</li>
+<li>Mix results from the source code with the original narratives.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h1>Why this is important?</h1>
+  </hgroup>
+  <article>
+    <p>Results from scientific research have to be reproducible to be trustworthy. We do not want a finding to be merely due to an isolated occurrence. Instill confidence, share data, results and scripts using github.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h1>What is markdown?</h1>
+  </hgroup>
+  <article>
+    <p>An incredibly simple semantic file format.Markdown makes it easy for even those without a web-publishing background to write any sort of text (including with links, lists, bullets, etc.) and have it displayed in a variety of formats. </p>
+
+<ul>
+<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown cheatsheet</a></li>
+<li><a href="http://daringfireball.net/projects/markdown/basics">Original markdown reference</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h1>Creating a basic knitr document</h1>
+  </hgroup>
+  <article>
+    <p>In RStudio, choose new R Markdown file (easiest way)
+or create a new file and save it with extension <code>.Rmd</code>.</p>
+
+<pre><code>
+
+```r
+# some R code
+```
+
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Knitr</h2>
+  </hgroup>
+  <article>
+    <p>Hit the Knit HTML button</p>
+
+<p><strong>What just happened?</strong></p>
+
+<p>knitr reads the Rmd file, finds and runs the code chunks identified by the backticks, and replaces it with the output of the functions. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <p>Knitr will auto make tables, graphs, and even slides.</p>
+
+<p>Everything in this course was made by typing into Rstudio and using knitr. Period. It is a powerful tool.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Version Control and Github</h2>
+  </hgroup>
+  <article>
+    <p>Make your life easier, safer, and more fun.</p>
+
+<ul>
+<li>Setup a GitHub account here.</li>
+<li>Download and install Rstudio.</li>
+<li>Download and install the platform-specific version of Git (not GitHub), default options   work well.</li>
+<li>Configure Git with global commands. I have found this step necessary both times I     ran through this process. Open up the bash version of Git and type the following:<br></li>
+</ul>
+
+<p>git config global user.name your GitHub account name                                                     git config global user.email your email</p>
+
+<ul>
+<li>Open Rstudio and set the path to Git executable. Go to Tools &gt; Options &gt; Git/SVN<br></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h1>Make a repo on github.com</h1>
+  </hgroup>
+  <article>
+    <p>A repository is the location and name for all the files associated with a particular project. The first step is to log into your GitHub account and create a new repository. Make sure you check the box Initialize this repository with a README. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h1>Clone your repo</h1>
+  </hgroup>
+  <article>
+    <ul>
+<li><p>Open Rstudio and go to Project &gt; Create Project &gt; Version Control &gt; Git and paste the url in the github repo</p></li>
+<li><p>Now do some work in your new R project and create and save some files. The next step is to commit your work  essentially making a copy of all of your script files (i.e., .R files) associated with the R project.</p></li>
+</ul>
+
+<p>*Commit your work, give it some description</p>
+
+<p>*push to the web.</p>
+
+<p>sleep easy.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Thank You</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<script src='libraries/widgets/bootstrap/js/bootstrap.min.js'></script>
+<script>  
+$(function (){ 
+  $("#example").popover(); 
+  $("[rel='tooltip']").tooltip(); 
+});  
+</script>  
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
