@@ -10,9 +10,11 @@ widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
-As scientists, our major currency is data. R provides a common ground for data analysis. Using R for data visualization, exploration, and analysis opens up a massive set of tools. You will find that nothing, absolutely nothing, you will do has not been atleast tried before. There are packages covering every imaginable type of ecological, evolutionary, and statiscal approaches. Today we will discuss how to read in data, perform basic functions, and produce figures. 
-
 <img src="http://thedataqualitychronicle.org/wp-content/uploads/2013/05/Big-Data.jpg" alt="Drawing" style="width: 400px;"/> 
+
+As scientists, our major currency is data. R provides a common ground for data analysis. Using R for data visualization, exploration, and analysis opens up a massive set of tools. 
+
+You will find that nothing, absolutely nothing, you will do has not been atleast tried before. There are packages covering every imaginable type of ecological, evolutionary, and statiscal approaches. Today we will discuss how to read in data, perform basic functions, and produce figures. 
 
 ---
 
@@ -130,20 +132,20 @@ ggplot(traits,aes(x=Mass,y=WingChord,color=Bill,shape=Clade)) + geom_point()
 
 Shapes and sizes can be added as well, note how ggplot automatically groups by both variables. In this case we have a bit too many to make it helpful, but it depends on your data.
 
-```{r,warning=FALSE,message=FALSE}
+```{r,warning=FALSE,message=FALSE,dpi=100,fig.width=8,fig.height=4}
 ggplot(traits,aes(x=Bill,y=WingChord,color=Clade,size=Mass)) + geom_point()
 ```
-
 ggplot is very smart. Trust it.
+
 ---
 
 **Try it!**
 ------------
 
-1. Plot Bill as a function of Wingchord, save it as object p
-2. Plot Bill against clade membership, which clade has the lowest median bill size?
-3. Look up geom_histogram, what does it go? made a histogram of Bill sizes.
-4. Color your histogram by clade membership, which clade does the outlier belong to?
+1. Plot **Bill** as a function of **Wingchord**, save it as object p
+2. Plot **Bill** against clade, which clade has the lowest median bill size?
+3. Look up geom_histogram, what does it go? made a histogram of **Bill** sizes.
+4. Color your histogram by clade, which clade does the outlier belong to?
 
 ---
 
@@ -152,9 +154,8 @@ Adding multiple geometries to a plot
 
 Often we want to express more information than a single geometric object, ggplot allows us immense flexiblity by allowing us to build on our initial plot
 
-```{r,warning=FALSE,message=FALSE}
-p<-ggplot(traits,aes(x=Mass,y=Bill)) + geom_point() + geom_smooth()
-p
+```{r,warning=FALSE,message=FALSE,fig.width=6,fig.height=5}
+ggplot(traits,aes(x=Mass,y=Bill)) + geom_point() + geom_smooth()
 ```
 
 ---
@@ -175,15 +176,16 @@ coq<-droplevels(traits[traits$Clade == "Coquettes",])
 Text can be added, and manipulated directly
 ============================================
 
-```{r}
+```{r,fig.height=6,fig.width=7}
 ggplot(coq,aes(x=Bill,y=WingChord,size=Mass,label=Genus)) + geom_point() + geom_text(size=3)
 ```
 
 ---
-
-```{r, fig.height=4,fig.width=13}
-ggplot(coq,aes(x=Species,y=WingChord,col=Bill,size=Mass)) + geom_point() + facet_grid(~Genus,scales="free") + theme_bw() + theme(axis.text.x=element_text(angle=-90)) + scale_color_continuous(low="blue",high="red") + ylab("Wing Length") 
+Data can be facetted into panels
+```{r, fig.height=4,fig.width=13.5}
+ggplot(coq,aes(x=Species,y=WingChord,col=Bill,size=Mass)) + geom_point() + facet_grid(~Genus,scales="free") + theme(axis.text.x=element_text(angle=-90)) + scale_color_continuous(low="blue",high="red") + ylab("Wing Length") 
 ```
+**Parsed**: Plot the dataframe coq, with Species on the x axis, with WingChord on the y axis, color the data by Bill size, and adjust the size of the data based on Mass. Add points. Create a panel for each Genus, make the x axis different for each panel. Rotate the x axis labels by 90degrees. Change the color of the Bill size from blue to red. Label the y axis "Wing length"
 
 ---
 10min Group Assignment
