@@ -35,7 +35,7 @@ traits <- read.csv("C:/Users/Jorge/Documents/IntroR/05-DataExploration/Traits.cs
 
 ---
 <!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Tue Jan 14 11:41:50 2014 -->
+<!-- Tue Jan 14 11:53:33 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Clade </TH> <TH> Genus </TH> <TH> Species </TH> <TH> double </TH> <TH> English </TH> <TH> Bill </TH> <TH> Mass </TH> <TH> WingChord </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Coquettes </TD> <TD> Adelomyia </TD> <TD> melanogenys </TD> <TD> Adelomyia melanogenys </TD> <TD> Speckled Hummingbird </TD> <TD align="right"> 15.04 </TD> <TD align="right"> 4.25 </TD> <TD align="right"> 55.87 </TD> </TR>
@@ -118,7 +118,6 @@ ggplot(traits, aes(x = WingChord, y = Mass)) + geom_point()
 
 For now, we will always be setting global aesthestics inside the *ggplot()* and not the *geom_point()*.
 
-
 ```r
 ggplot(traits, aes(x = Clade, y = Mass)) + geom_point()
 ```
@@ -170,7 +169,6 @@ Shapes and sizes can be added as well, note how ggplot automatically groups by b
 
 *** right 
 
-
 ```r
 ggplot(traits, aes(x = Mass, y = WingChord, color = Bill, shape = Clade)) + 
     geom_point()
@@ -182,9 +180,7 @@ ggplot(traits, aes(x = Mass, y = WingChord, color = Bill, shape = Clade)) +
 -ggplot is very smart. Trust it.
 
 ---
-
 Shapes and sizes can be added as well, note how ggplot automatically groups by both variables. In this case we have a bit too many to make it helpful, but it depends on your data.
-
 
 ```r
 ggplot(traits, aes(x = Bill, y = WingChord, color = Clade, size = Mass)) + geom_point()
@@ -210,7 +206,6 @@ Adding multiple geometries to a plot
 ------------------------------------
 
 Often we want to express more information than a single geometric object, ggplot allows us immense flexiblity by allowing us to build on our initial plot
-
 
 ```r
 ggplot(traits, aes(x = Mass, y = Bill)) + geom_point() + geom_smooth()
@@ -238,7 +233,6 @@ coq <- droplevels(traits[traits$Clade == "Coquettes", ])
 ---
 Text can be added, and manipulated directly
 ============================================
-
 
 ```r
 ggplot(coq, aes(x = Bill, y = WingChord, size = Mass, label = Genus)) + geom_point() + 

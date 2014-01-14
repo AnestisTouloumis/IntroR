@@ -84,7 +84,6 @@ ggplot(traits,aes(x=WingChord,y=Mass)) + geom_point()
 ---
 
 For now, we will always be setting global aesthestics inside the *ggplot()* and not the *geom_point()*.
-
 ```{r,fig.height=5,fig.width=8}
 ggplot(traits,aes(x=Clade,y=Mass)) + geom_point() 
 # What if we want something besides points
@@ -92,7 +91,7 @@ ggplot(traits,aes(x=Clade,y=Mass)) + geom_point()
 
 ---
 There are many geom styles type **geom_** and hit tab to see types, and then get help using ?geom_nameofgeom 
-```{r,fig.height=5,fig.width=8,dpi=150}
+```{r,fig.height=5,fig.width=8,dpi=75}
 ggplot(traits,aes(x=Clade,y=Mass)) + geom_boxplot() 
 ```
 
@@ -106,7 +105,7 @@ Building more complex plots
 - **Parsed**: Create a plot from the data frame *traits*. The x axis is the column *Mass*, the y axis is the column *WingChord*, color the data by the continious variable column *Bill*. Add points. 
 
 *** right
-```{r,fig.height=5,fig.width=6,dpi=150}
+```{r,fig.height=5,fig.width=6,dpi=75}
 p<-ggplot(traits,aes(x=Mass,y=WingChord,color=Bill))
 p + geom_point()
 ```
@@ -121,18 +120,15 @@ Shapes and sizes can be added as well, note how ggplot automatically groups by b
 - **Parsed**:Create a plot from the dataframe traits, with Mass on the x axis, WingChord on the y. Color the data by the continious variable Bill, and add shapes to the data based on the categorical data Clade. Add points. 
 
 *** right 
-
-```{r,warning=FALSE,message=FALSE,fig.width=7,fig.height=5,dpi=150}
+```{r,warning=FALSE,message=FALSE,fig.width=7,fig.height=5,dpi=75}
 ggplot(traits,aes(x=Mass,y=WingChord,color=Bill,shape=Clade)) + geom_point()
 ```
 
 -ggplot is very smart. Trust it.
 
 ---
-
 Shapes and sizes can be added as well, note how ggplot automatically groups by both variables. In this case we have a bit too many to make it helpful, but it depends on your data.
-
-```{r,warning=FALSE,message=FALSE,dpi=100,fig.width=8,fig.height=4}
+```{r,warning=FALSE,message=FALSE,dpi=75,fig.width=8,fig.height=4}
 ggplot(traits,aes(x=Bill,y=WingChord,color=Clade,size=Mass)) + geom_point()
 ```
 ggplot is very smart. Trust it.
@@ -153,8 +149,7 @@ Adding multiple geometries to a plot
 ------------------------------------
 
 Often we want to express more information than a single geometric object, ggplot allows us immense flexiblity by allowing us to build on our initial plot
-
-```{r,warning=FALSE,message=FALSE,fig.width=6,fig.height=5,dpi=150}
+```{r,warning=FALSE,message=FALSE,fig.width=6,fig.height=5,dpi=75}
 ggplot(traits,aes(x=Mass,y=Bill)) + geom_point() + geom_smooth()
 ```
 
@@ -175,14 +170,13 @@ coq<-droplevels(traits[traits$Clade == "Coquettes",])
 ---
 Text can be added, and manipulated directly
 ============================================
-
-```{r,fig.height=6,fig.width=7,dpi=100}
+```{r,fig.height=6,fig.width=7,dpi=75}
 ggplot(coq,aes(x=Bill,y=WingChord,size=Mass,label=Genus)) + geom_point() + geom_text(size=3)
 ```
 
 ---
 Data can be facetted into panels
-```{r, fig.height=4,fig.width=13.5,dpi=100}
+```{r, fig.height=4,fig.width=13.5}
 ggplot(coq,aes(x=Species,y=WingChord,col=Bill,size=Mass)) + geom_point() + facet_grid(~Genus,scales="free") + theme(axis.text.x=element_text(angle=-90)) + scale_color_continuous(low="blue",high="red") + ylab("Wing Length") 
 ```
 **Parsed**: Plot the dataframe coq, with Species on the x axis, with WingChord on the y axis, color the data by Bill size, and adjust the size of the data based on Mass. Add points. Create a panel for each Genus, make the x axis different for each panel. Rotate the x axis labels by 90degrees. Change the color of the Bill size from blue to red. Label the y axis "Wing length"
