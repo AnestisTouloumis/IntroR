@@ -176,13 +176,13 @@ coq<-droplevels(traits[traits$Clade == "Coquettes",])
 Text can be added, and manipulated directly
 ============================================
 
-```{r,fig.height=6,fig.width=7}
+```{r,fig.height=6,fig.width=7,dpi=100}
 ggplot(coq,aes(x=Bill,y=WingChord,size=Mass,label=Genus)) + geom_point() + geom_text(size=3)
 ```
 
 ---
 Data can be facetted into panels
-```{r, fig.height=4,fig.width=13.5}
+```{r, fig.height=4,fig.width=13.5,dpi=100}
 ggplot(coq,aes(x=Species,y=WingChord,col=Bill,size=Mass)) + geom_point() + facet_grid(~Genus,scales="free") + theme(axis.text.x=element_text(angle=-90)) + scale_color_continuous(low="blue",high="red") + ylab("Wing Length") 
 ```
 **Parsed**: Plot the dataframe coq, with Species on the x axis, with WingChord on the y axis, color the data by Bill size, and adjust the size of the data based on Mass. Add points. Create a panel for each Genus, make the x axis different for each panel. Rotate the x axis labels by 90degrees. Change the color of the Bill size from blue to red. Label the y axis "Wing length"
