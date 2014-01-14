@@ -92,7 +92,7 @@ ggplot(traits,aes(x=Clade,y=Mass)) + geom_point()
 
 ---
 There are many geom styles type **geom_** and hit tab to see types, and then get help using ?geom_nameofgeom 
-```{r,fig.height=5,fig.width=8}
+```{r,fig.height=5,fig.width=8,dpi=150}
 ggplot(traits,aes(x=Clade,y=Mass)) + geom_boxplot() 
 ```
 
@@ -106,7 +106,7 @@ Building more complex plots
 - **Parsed**: Create a plot from the data frame *traits*. The x axis is the column *Mass*, the y axis is the column *WingChord*, color the data by the continious variable column *Bill*. Add points. 
 
 *** right
-```{r,fig.height=5,fig.width=6}
+```{r,fig.height=5,fig.width=6,dpi=150}
 p<-ggplot(traits,aes(x=Mass,y=WingChord,color=Bill))
 p + geom_point()
 ```
@@ -122,7 +122,7 @@ Shapes and sizes can be added as well, note how ggplot automatically groups by b
 
 *** right 
 
-```{r,warning=FALSE,message=FALSE,fig.width=7,fig.height=5}
+```{r,warning=FALSE,message=FALSE,fig.width=7,fig.height=5,dpi=150}
 ggplot(traits,aes(x=Mass,y=WingChord,color=Bill,shape=Clade)) + geom_point()
 ```
 
@@ -154,7 +154,7 @@ Adding multiple geometries to a plot
 
 Often we want to express more information than a single geometric object, ggplot allows us immense flexiblity by allowing us to build on our initial plot
 
-```{r,warning=FALSE,message=FALSE,fig.width=6,fig.height=5}
+```{r,warning=FALSE,message=FALSE,fig.width=6,fig.height=5,dpi=150}
 ggplot(traits,aes(x=Mass,y=Bill)) + geom_point() + geom_smooth()
 ```
 
