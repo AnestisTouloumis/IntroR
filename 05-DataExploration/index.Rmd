@@ -12,26 +12,27 @@ mode        : selfcontained # {standalone, draft}
 
 As scientists, our major currency is data. R provides a common ground for data analysis. Using R for data visualization, exploration, and analysis opens up a massive set of tools. You will find that nothing, absolutely nothing, you will do has not been atleast tried before. There are packages covering every imaginable type of ecological, evolutionary, and statiscal approaches. Today we will discuss how to read in data, perform basic functions, and produce figures. 
 
-![data](http://thedataqualitychronicle.org/wp-content/uploads/2013/05/Big-Data.jpg)
+<img src="http://thedataqualitychronicle.org/wp-content/uploads/2013/05/Big-Data.jpg" alt="Drawing" style="width: 400px;"/> 
+
 ---
 
-The Data
-========
-
-----
 Tips for Importing Data
 =======================
+R is not a spreadsheet application. Enter data in excel or access, and export it to R for analysis. 
 
 Data is easiest to read in a .csv format, in excel, save as -> comma seperated csv. 
 
 Avoid Spaces, Special Characters, or hanging lines of data.
 
 ---
-```{r}
-#Load in the ggplot2 library, which we will use later.
-library(ggplot2)
-traits<-read.csv("C:/Users/Jorge/Documents/Rcourse/Data/Traits.csv")
-head(traits)
+```{r,warning=FALSE,message=FALSE}
+traits<-read.csv("C:/Users/Jorge/Documents/IntroR/05-DataExploration/Traits.csv",row.names=1)
+```
+---
+```{r, results = 'asis', comment = NA,message=FALSE,echo=FALSE}
+require(xtable)
+options(xtable.type = 'html')
+xtable(head(traits))
 ```
 
 ---
@@ -63,53 +64,67 @@ ggplot2
 
 The ggplot library is the gold-standard for plotting. It allows basic, intuitive, plots that can be endlessly customized. The help screens are full of clear examples, and there is a massive online community to search basic plotting questions. Let's explore our first plot.
 
+```{r}
+library(ggplot2)
+```
+
 ---&twocol
 
-***left
-    * Allometry of Wing Length and Mass
+*** left
+
 ```{r}
 ggplot(traits,aes(x=WingChord,y=Mass)) + geom_point()
 ```
 
- ***right
-    * Parsed: Create a plot from the data frame traits, with matching the datatype and properties of the column WingChord on the x axis, and Mass on the Y axis. Add points. 
+*** right
+-    **Parsed**: Create a plot from the data frame traits, with matching the datatype and properties of the column WingChord on the x axis, and Mass on the Y axis. Add points. 
 
 ---
 
 For now, we will always be setting global aesthestics inside the *ggplot()* and not the *geom_point()*.
 
-```{r}
+```{r,fig.height=5,fig.width=8}
 ggplot(traits,aes(x=Clade,y=Mass)) + geom_point() 
 # What if we want something besides points
 ```
 
 ---
-
-```{r}
+There are many geom styles type **geom_** and hit tab to see types, and then get help using ?geom_nameofgeom 
+```{r,fig.height=5,fig.width=8}
 ggplot(traits,aes(x=Clade,y=Mass)) + geom_boxplot() 
 ```
 
-#There are many geom_styles type geom_ and hit tab to see types, and then using ?geom_nameofgeom to see their help screens 
-```
-Building more complex plots
----------------------------
-
-Continious colors can be added (and edited) to add more information
-```{r}
-ggplot(traits,aes(x=Mass,y=WingChord,color=Bill)) + geom_point()
-```
-
----
+---&twocol
 
 Building more complex plots
 ---------------------------
+
+*** left
+- **Continious colors can be added (and edited) to add more information**
+- **Parsed**: Create a plot from the data frame *traits*. The x axis is the column *Mass*, the y axis is the column *WingChord*, color the data by the continious variable column *Bill*. Add points. 
+
+*** right
+```{r,fig.height=5,fig.width=6}
+p<-ggplot(traits,aes(x=Mass,y=WingChord,color=Bill))
+p + geom_point()
+```
+
+---&twocol
+
+Building even more complex plots
+===============================
 Shapes and sizes can be added as well, note how ggplot automatically groups by both variables. In this case we have a bit too many to make it helpful, but it depends on your data.
 
-```{r,warning=FALSE,message=FALSE}
+*** left
+- **Parsed**:Create a plot from the dataframe traits, with Mass on the x axis, WingChord on the y. Color the data by the continious variable Bill, and add shapes to the data based on the categorical data Clade. Add points. 
+
+*** right 
+
+```{r,warning=FALSE,message=FALSE,fig.width=7,fig.height=5}
 ggplot(traits,aes(x=Mass,y=WingChord,color=Bill,shape=Clade)) + geom_point()
 ```
 
-ggplot is very smart. Trust it.
+-ggplot is very smart. Trust it.
 
 ---
 

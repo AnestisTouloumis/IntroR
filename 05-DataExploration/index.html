@@ -48,9 +48,7 @@
   <article>
     <p>As scientists, our major currency is data. R provides a common ground for data analysis. Using R for data visualization, exploration, and analysis opens up a massive set of tools. You will find that nothing, absolutely nothing, you will do has not been atleast tried before. There are packages covering every imaginable type of ecological, evolutionary, and statiscal approaches. Today we will discuss how to read in data, perform basic functions, and produce figures. </p>
 
-<h2><img src="http://thedataqualitychronicle.org/wp-content/uploads/2013/05/Big-Data.jpg" alt="data"></h2>
-
-<h1>The Data</h1>
+<p><img src="http://thedataqualitychronicle.org/wp-content/uploads/2013/05/Big-Data.jpg" alt="Drawing" style="width: 400px;"/> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -61,7 +59,9 @@
     <h1>Tips for Importing Data</h1>
   </hgroup>
   <article>
-    <p>Data is easiest to read in a .csv format, in excel, save as -&gt; comma seperated csv. </p>
+    <p>R is not a spreadsheet application. Enter data in excel or access, and export it to R for analysis. </p>
+
+<p>Data is easiest to read in a .csv format, in excel, save as -&gt; comma seperated csv. </p>
 
 <p>Avoid Spaces, Special Characters, or hanging lines of data.</p>
 
@@ -74,26 +74,8 @@
     
   </hgroup>
   <article>
-    <pre><code class="r"># Load in the ggplot2 library, which we will use later.
-library(ggplot2)
-traits &lt;- read.csv(&quot;C:/Users/Jorge/Documents/Rcourse/Data/Traits.csv&quot;)
-head(traits)
-</code></pre>
-
-<pre><code>##   X     Clade        Genus         Species                   double
-## 1 1 Coquettes    Adelomyia     melanogenys    Adelomyia melanogenys
-## 2 2 Brilliant   Aglaeactis     cupripennis   Aglaeactis cupripennis
-## 3 3 Coquettes Aglaiocercus       coelestis   Aglaiocercus coelestis
-## 4 4 Coquettes Aglaiocercus           kingi       Aglaiocercus kingi
-## 5 5   Emerald     Amazilia        amazilia        Amazilia amazilia
-## 6 6   Emerald     Amazilia castaneiventris Amazilia castaneiventris
-##                        English  Bill  Mass WingChord
-## 1         Speckled Hummingbird 15.04 4.245     55.87
-## 2              Shining Sunbeam 18.71 8.440     85.62
-## 3          Violet-tailed Sylph 16.25 6.070     68.68
-## 4            Long-tailed Sylph 15.77 5.530     67.12
-## 5         Amazilia Hummingbird 18.54 4.070     53.33
-## 6 Chestnut-bellied Hummingbird 18.70 4.750     52.70
+    <pre><code class="r">traits &lt;- read.csv(&quot;C:/Users/Jorge/Documents/IntroR/05-DataExploration/Traits.csv&quot;, 
+    row.names = 1)
 </code></pre>
 
   </article>
@@ -101,6 +83,29 @@ head(traits)
 </slide>
 
       <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+
+<!-- Tue Jan 14 10:15:42 2014 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Clade </TH> <TH> Genus </TH> <TH> Species </TH> <TH> double </TH> <TH> English </TH> <TH> Bill </TH> <TH> Mass </TH> <TH> WingChord </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Coquettes </TD> <TD> Adelomyia </TD> <TD> melanogenys </TD> <TD> Adelomyia melanogenys </TD> <TD> Speckled Hummingbird </TD> <TD align="right"> 15.04 </TD> <TD align="right"> 4.25 </TD> <TD align="right"> 55.87 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Brilliant </TD> <TD> Aglaeactis </TD> <TD> cupripennis </TD> <TD> Aglaeactis cupripennis </TD> <TD> Shining Sunbeam </TD> <TD align="right"> 18.71 </TD> <TD align="right"> 8.44 </TD> <TD align="right"> 85.62 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Coquettes </TD> <TD> Aglaiocercus </TD> <TD> coelestis </TD> <TD> Aglaiocercus coelestis </TD> <TD> Violet-tailed Sylph </TD> <TD align="right"> 16.25 </TD> <TD align="right"> 6.07 </TD> <TD align="right"> 68.68 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Coquettes </TD> <TD> Aglaiocercus </TD> <TD> kingi </TD> <TD> Aglaiocercus kingi </TD> <TD> Long-tailed Sylph </TD> <TD align="right"> 15.77 </TD> <TD align="right"> 5.53 </TD> <TD align="right"> 67.12 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Emerald </TD> <TD> Amazilia </TD> <TD> amazilia </TD> <TD> Amazilia amazilia </TD> <TD> Amazilia Hummingbird </TD> <TD align="right"> 18.54 </TD> <TD align="right"> 4.07 </TD> <TD align="right"> 53.33 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Emerald </TD> <TD> Amazilia </TD> <TD> castaneiventris </TD> <TD> Amazilia castaneiventris </TD> <TD> Chestnut-bellied Hummingbird </TD> <TD align="right"> 18.70 </TD> <TD align="right"> 4.75 </TD> <TD align="right"> 52.70 </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Data Explortation</h2>
   </hgroup>
@@ -130,7 +135,7 @@ For continues data, try <em>range</em>, <em>sd</em> <em>mean</em></p>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-5" style="background:;">
+      <slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2><strong>Try It!</strong></h2>
   </hgroup>
@@ -148,29 +153,16 @@ For continues data, try <em>range</em>, <em>sd</em> <em>mean</em></p>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-6" style="background:;">
+      <slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>ggplot2</h2>
   </hgroup>
   <article>
     <p>The ggplot library is the gold-standard for plotting. It allows basic, intuitive, plots that can be endlessly customized. The help screens are full of clear examples, and there is a massive online community to search basic plotting questions. Let&#39;s explore our first plot.</p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+<pre><code class="r">library(ggplot2)
+</code></pre>
 
-      <slide class="" id="slide-7" style="background:;">
-  <hgroup>
-    
-  </hgroup>
-  <article>
-    
-<div style='float:left;width:48%;' class='centered'>
-  
-</div>
-<div style='float:right;width:48%;'>
-  
-</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -180,16 +172,21 @@ For continues data, try <em>range</em>, <em>sd</em> <em>mean</em></p>
     
   </hgroup>
   <article>
-    <p>For now, we will always be setting global aesthestics inside the <em>ggplot()</em> and not the <em>geom_point()</em>.</p>
-
-<pre><code class="r">ggplot(traits, aes(x = Clade, y = Mass)) + geom_point()
+    
+<div style='float:left;width:48%;' class='centered'>
+  <pre><code class="r">ggplot(traits, aes(x = WingChord, y = Mass)) + geom_point()
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
 
-<pre><code class="r"># What if we want something besides points
-</code></pre>
 
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>   <strong>Parsed</strong>: Create a plot from the data frame traits, with matching the datatype and properties of the column WingChord on the x axis, and Mass on the Y axis. Add points. </li>
+</ul>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -199,23 +196,15 @@ For continues data, try <em>range</em>, <em>sd</em> <em>mean</em></p>
     
   </hgroup>
   <article>
-    <pre><code class="r">ggplot(traits, aes(x = Clade, y = Mass)) + geom_boxplot()
-</code></pre>
+    <p>For now, we will always be setting global aesthestics inside the <em>ggplot()</em> and not the <em>geom_point()</em>.</p>
 
-<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
-
-<p>#There are many geom<em>styles type geom</em> and hit tab to see types, and then using ?geom_nameofgeom to see their help screens </p>
-
-<pre><code>Building more complex plots
----------------------------
-
-Continious colors can be added (and edited) to add more information
-
-```r
-ggplot(traits, aes(x = Mass, y = WingChord, color = Bill)) + geom_point()
+<pre><code class="r">ggplot(traits, aes(x = Clade, y = Mass)) + geom_point()
 </code></pre>
 
 <p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
+
+<pre><code class="r"># What if we want something besides points
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -223,24 +212,76 @@ ggplot(traits, aes(x = Mass, y = WingChord, color = Bill)) + geom_point()
 
       <slide class="" id="slide-10" style="background:;">
   <hgroup>
-    <h2>Building more complex plots</h2>
+    
   </hgroup>
   <article>
-    <p>Shapes and sizes can be added as well, note how ggplot automatically groups by both variables. In this case we have a bit too many to make it helpful, but it depends on your data.</p>
+    <p>There are many geom styles type <strong>geom_</strong> and hit tab to see types, and then get help using ?geom_nameofgeom </p>
 
-<pre><code class="r">ggplot(traits, aes(x = Mass, y = WingChord, color = Bill, shape = Clade)) + 
-    geom_point()
+<pre><code class="r">ggplot(traits, aes(x = Clade, y = Mass)) + geom_boxplot()
 </code></pre>
 
 <p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
-
-<p>ggplot is very smart. Trust it.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
       <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Building more complex plots</h2>
+  </hgroup>
+  <article>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li><strong>Continious colors can be added (and edited) to add more information</strong></li>
+<li><strong>Parsed</strong>: Create a plot from the data frame <em>traits</em>. The x axis is the column <em>Mass</em>, the y axis is the column <em>WingChord</em>, color the data by the continious variable column <em>Bill</em>. Add points. </li>
+</ul>
+
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">p &lt;- ggplot(traits, aes(x = Mass, y = WingChord, color = Bill))
+p + geom_point()
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h1>Building even more complex plots</h1>
+  </hgroup>
+  <article>
+    <p>Shapes and sizes can be added as well, note how ggplot automatically groups by both variables. In this case we have a bit too many to make it helpful, but it depends on your data.</p>
+
+
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li><strong>Parsed</strong>:Create a plot from the dataframe traits, with Mass on the x axis, WingChord on the y. Color the data by the continious variable Bill, and add shapes to the data based on the categorical data Clade. Add points. </li>
+</ul>
+
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">ggplot(traits, aes(x = Mass, y = WingChord, color = Bill, shape = Clade)) + 
+    geom_point()
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+<p>-ggplot is very smart. Trust it.</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -250,7 +291,7 @@ ggplot(traits, aes(x = Mass, y = WingChord, color = Bill)) + geom_point()
 <pre><code class="r">ggplot(traits, aes(x = Bill, y = WingChord, color = Clade, size = Mass)) + geom_point()
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
+<p><img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
 
 <h2>ggplot is very smart. Trust it.</h2>
 
@@ -267,7 +308,7 @@ ggplot(traits, aes(x = Mass, y = WingChord, color = Bill)) + geom_point()
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-12" style="background:;">
+      <slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>Adding multiple geometries to a plot</h2>
   </hgroup>
@@ -278,13 +319,13 @@ ggplot(traits, aes(x = Mass, y = WingChord, color = Bill)) + geom_point()
 p
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+<p><img src="figure/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-13" style="background:;">
+      <slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h1>Practice plotting</h1>
   </hgroup>
@@ -302,7 +343,7 @@ p
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-14" style="background:;">
+      <slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h1>Text can be added, and manipulated directly</h1>
   </hgroup>
@@ -311,13 +352,13 @@ p
     geom_text(size = 3)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
+<p><img src="figure/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-15" style="background:;">
+      <slide class="" id="slide-17" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -327,13 +368,13 @@ p
     scale_color_continuous(low = &quot;blue&quot;, high = &quot;red&quot;) + ylab(&quot;Wing Length&quot;)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"> </p>
+<p><img src="figure/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-16" style="background:;">
+      <slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h1>10min Group Assignment</h1>
   </hgroup>
@@ -344,7 +385,7 @@ p
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-17" style="background:;">
+      <slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h1>Exporting Dataframes</h1>
   </hgroup>
