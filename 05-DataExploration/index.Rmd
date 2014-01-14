@@ -162,9 +162,10 @@ Practice plotting
 ====================
 To show some more features, let's make a bit smaller dataset
 
-#Given a bit smaller dataset, we can explore more options, add both color and shape, drawing on what we've done already, how would we subset our data to just get the coquettes clades?
+Given a bit smaller dataset, we can explore more options, add both color and shape, drawing on what we've done already, how would we subset our data to just get the coquettes clades?
 
-Add image of a coquette here.
+![Bearded HelmetCrest]http://www.birdforum.net/opus/images/1/1c/P1490597_filtered.jpg)
+
 ---
 ```{r}
 coq<-droplevels(traits[traits$Clade == "Coquettes",])

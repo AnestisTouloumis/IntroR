@@ -33,7 +33,7 @@ traits <- read.csv("C:/Users/Jorge/Documents/IntroR/05-DataExploration/Traits.cs
 
 ---
 <!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Tue Jan 14 10:15:42 2014 -->
+<!-- Tue Jan 14 10:20:05 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Clade </TH> <TH> Genus </TH> <TH> Species </TH> <TH> double </TH> <TH> English </TH> <TH> Bill </TH> <TH> Mass </TH> <TH> WingChord </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Coquettes </TD> <TD> Adelomyia </TD> <TD> melanogenys </TD> <TD> Adelomyia melanogenys </TD> <TD> Speckled Hummingbird </TD> <TD align="right"> 15.04 </TD> <TD align="right"> 4.25 </TD> <TD align="right"> 55.87 </TD> </TR>
@@ -223,9 +223,10 @@ Practice plotting
 ====================
 To show some more features, let's make a bit smaller dataset
 
-#Given a bit smaller dataset, we can explore more options, add both color and shape, drawing on what we've done already, how would we subset our data to just get the coquettes clades?
+Given a bit smaller dataset, we can explore more options, add both color and shape, drawing on what we've done already, how would we subset our data to just get the coquettes clades?
 
-Add image of a coquette here.
+![Bearded HelmetCrest]http://www.birdforum.net/opus/images/1/1c/P1490597_filtered.jpg)
+
 ---
 
 ```r
