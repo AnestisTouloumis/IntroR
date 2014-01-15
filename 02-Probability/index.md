@@ -14,6 +14,7 @@ What did we learn last time?
 ===========================
 > 1. The Basic Components of R and Rstudio
 > 2. Vectors and Basic Math
+> 3. How to access the help screen
 
 ---
 Review
@@ -30,16 +31,16 @@ Distributions
 
 Generating random samples from a normal distribution
 
-It is often very useful to be able to generate a sample from a specific distribution. To generate a sample of size 100 from a standard normal distribution (with mean 0 and standard deviation 1) we use the rnorm function. We only have to supply the n (sample size) argument since mean 0 and standard deviation 1 are the default values for the mean and stdev arguments.
+It is often very useful to be able to generate a sample from a specific distribution. To generate a sample of size 100 from a standard normal distribution (with mean 0 and standard deviation 1) we use the rnorm function. 
 
 
 ```r
-norm <- rnorm(100)
+norm <- rnorm(100, mean = 0, sd = 1)
 head(norm)
 ```
 
 ```
-## [1] -0.99115  0.16671 -0.08847  1.16380 -0.53200  0.93675
+## [1] -0.0395 -0.1052  0.1132 -0.2661 -0.4648 -1.6235
 ```
 
 
@@ -47,29 +48,27 @@ head(norm)
 
 **Try It!**
 ------------
-1. Look up the rnorm function in help screen, what are three arguments?
+1. Look up the rnorm function in help screen, locate the three arguments we used.
 2. Draw 100 random numbers from a normal distribution with a mean of 3 and an sd of 2, assign it to an object "a"
-3. Find the mean number if your draw, how close was it to the true mean
+3. Find the mean number if your draw, how close was it to the true mean?
 4. Using the ?? tool, lookup the function for standard deviation *Hint* the ?? tool should not include spaces in the query.
-5. Drawing on what we learned last time, if "a" is a vector of 100 random normal draws, what is the syntax to get the 13th number in the vector?
+5. What is the 13th number in the your vector a?
 
 ---
 
 Generating random samples from other distributions
 ===========
 
-R has many distributions in the base package, including all commonly used in biological analysis. Depending on the distribution, each function has its own set of parameter arguments. For example, the 'rpois' function is the random number generator for the Poisson distribution and it has only the parameter argument lambda. The rbinom function is the random number generator for the binomial distribution and it takes two arguments: size and prob. The size argument specifies the number of Bernoulli trials and the prob argument specifies the probability of a success for each trial. 
+R has many distributions in the base package, including all commonly used in biological analysis. Depending on the distribution, each function has its own set of parameter arguments. For example, the *'rpois()'* function is the random number generator for the Poisson distribution and it has only the parameter argument lambda. The *rbinom()* function is the random number generator for the binomial distribution and it takes two arguments: size and prob. The size argument specifies the number of Bernoulli trials and the prob argument specifies the probability of a success for each trial. Heather will pick up from here.
 
 For now, its sufficient to know that a possion distribution is commonly used for count data, and has only paramater lambda, which is both the expected mean and var
-
-Generating a random sample from a Poisson distribution with lambda=3
 
 ---
 
 **Try It!**
 ------------
 6. Draw 100 values from a poisson with a lambda =3, assign it to an object a
-7. Draw 1000 values from a poisson with a lambda, assign it to an object b
+7. Draw 1000 values from a poisson with a lambda = 3, assign it to an object b
 8. Find the means of both draws, what is the difference in means?
 
 ---
@@ -80,14 +79,14 @@ Other distribution functions
 
 > The **dnorm()** function will generate the density (or point) probability for a specific value for a normal distribution. This function is very useful for creating a plot of a density function of a distribution. In the list of the random number generator functions all the functions started with an "r", similarly the density functions for all the distributions all start with a "d". 
 
-> The other two functions **pnorm()**, and **qnorm()** will be covered during Biometry. 
+> The other two functions **pnorm()**, and **qnorm()** will be covered during Biometry. But it is sufficient to know they give the probability and quantile distributions. They are less commonly used.
 
 ---
 
 **Try It!**
 ------------
 
-9. What is the point probability for a -1.96 for a normal of mean =0, sd=1
+9. What is the density of x =  -1.96 for a normal of mean =0, sd=1. 
 10. We want to make a sequence of numbers, based on a given interval, look up, using ??sequence, and find the function that does this. *Hint* it is in the base package
 11. Create a sequence beginning at 0 and ending at 4, with .2 intervals, save this as object x.
 
@@ -135,9 +134,30 @@ plot(x, dnorm(dens, 2, 0.5), type = "l")
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 
----
+---&twocol
 
-The base package has an immense number of plotting tools, let's look at the plot help screen
+> The base package has an immense number of plotting tools, let's look at the plot help screen.
+> One nice option is to plot the distribution not in terms of raw counts, but in terms of density, so the histogram sums to 1
+
+*** left
+
+```r
+x <- rnorm(100, mean = 0, sd = 2)
+hist(x)
+```
+
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+
+
+*** right
+
+```r
+hist(x, freq = FALSE)
+```
+
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+
+
 
 ---
 
@@ -167,8 +187,7 @@ sample(x, 20)
 ```
 
 ```
-##  [1]  37  81  27  78  71  56  18  21  14  92   5   6  42 100  24  96  44
-## [18]  19  38  97
+##  [1] 59 15 97 26 52 35 64 17 86 22 81 85 33 14 78  5 71 27 49  7
 ```
 
 
@@ -181,7 +200,7 @@ sample(x, 20, replace = TRUE)
 ```
 
 ```
-##  [1] 27 82  2 89 28 68 99 22 76  1 61 11 70 59  9 53 36 66 52 36
+##  [1] 92 11 37 29 42 38 90 43 98 73  7 99 48  7 79 61 56 68 93 15
 ```
 
 

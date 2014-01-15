@@ -35,7 +35,7 @@
     <slide class="title-slide segue nobackground">
       <hgroup class="auto-fadein">
         <h1>Basics of R</h1>
-        <h2></h2>
+        <h2>Diving in.</h2>
         <p>Ben Weinstein<br/></p>
       </hgroup>
           </slide>
@@ -86,7 +86,7 @@
   <article>
     <p>The R console returns objects based on functions and expressions.</p>
 
-<p><img src="C:/Users/Jorge/Documents/Rcourse/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 500px;"/> </p>
+<p><img src="C:/Users/Ben/Documents/GitHub/IntroR/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 500px;"/> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -103,7 +103,7 @@
 
 <ol>
 <li><p>What is 17 multiplied by 365?</p></li>
-<li><p>What is 7<sup>3?</sup></p></li>
+<li><p>What is 7 cubed?</p></li>
 </ol>
 
   </article>
@@ -193,7 +193,8 @@ c
   </hgroup>
   <article>
     <ol>
-<li>Create an object that is your age. Create another object that is the age of the person to your right. Find the difference between these objects. </li>
+<li><p>Create an object that is your age. Create another object that is the age of the person to your right. Find the difference between these objects. </p></li>
+<li><p>Set x to equal seven, set y to equal 10. What is x * y * y</p></li>
 </ol>
 
   </article>
@@ -206,7 +207,7 @@ c
   </hgroup>
   <article>
     <p>R has 5 common data structures, we will learn today about the simplest - vectors.
-Vectors are one dimensional strings of numbers, characters of objectsA vector is made using the function c(), explained later today.</p>
+Vectors are one dimensional strings of numbers, characters of objects. A vector is made using the function <em>c()</em>, explained later today.</p>
 
 <p>Combine numbers into a vector</p>
 
@@ -330,7 +331,7 @@ mean(c(3, 4, 5))
 
       <slide class="" id="slide-15" style="background:;">
   <hgroup>
-    <h1>Functions can act on an objects </h1>
+    <h1>Functions can act on objects </h1>
   </hgroup>
   <article>
     <pre><code class="r">a &lt;- c(3, 4, 5)
@@ -428,15 +429,18 @@ mean(a)
 
       <slide class="" id="slide-22" style="background:;">
   <hgroup>
-    
+    <h1>You are not alone Part I - The R Help Screen and User Community</h1>
   </hgroup>
   <article>
-    <p>You are not alone Part I - The R Help Screen and User Community</p>
-
-<pre><code class="r">## ss 1.1.3: Online Help
+    <pre><code class="r">## ss 1.1.3: Online Help
 `?`(mean  # Equivalent to help(mean) 
 )
+</code></pre>
 
+<pre><code>## starting httpd help server ... done
+</code></pre>
+
+<pre><code class="r">
 `?`(sort  # Try, also, apropos (&#39;sor&#39;) 
 )
 # List all functions where &#39;sort&#39; is part of the name
@@ -451,7 +455,7 @@ mean(a)
 
       <slide class="" id="slide-23" style="background:;">
   <hgroup>
-    <h2>You are not alone Part II - The R Help Screen and User Community</h2>
+    <h1>You are not alone Part II - The R Help Screen and User Community</h1>
   </hgroup>
   <article>
     <p><img src="http://img78.imageshack.us/img78/196/wheelsel6.gif" alt="alt text"></p>
@@ -467,6 +471,34 @@ mean(a)
   <article>
     <p>type in <code>quit()</code> or <code>q()</code> and answer <code>Y</code> to quit. Always remember to save scripts. For now we will not save workspaces!</p>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Quick Review</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>1. Find the product of 17 multiplied by .75</li>
+<li>2. Save this product to an object x</li>
+<li>3. Find the product of 17 multiplied by .05, save as object y</li>
+<li>4. Create a vector of x x y y x</li>
+<li>5. How would you call the third position in this vector?</li>
+<li><ol>
+<li>The function seq will be used repeatedly throughout this course</li>
+</ol>
+
+<p>a. Look at the help screen for seq, what does it do?</p></li>
+</ul>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>

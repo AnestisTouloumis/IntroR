@@ -49,6 +49,7 @@
     <ol class = "build">
 <li>The Basic Components of R and Rstudio</li>
 <li>Vectors and Basic Math</li>
+<li>How to access the help screen</li>
 </ol>
 
   </article>
@@ -75,13 +76,13 @@
   <article>
     <p>Generating random samples from a normal distribution</p>
 
-<p>It is often very useful to be able to generate a sample from a specific distribution. To generate a sample of size 100 from a standard normal distribution (with mean 0 and standard deviation 1) we use the rnorm function. We only have to supply the n (sample size) argument since mean 0 and standard deviation 1 are the default values for the mean and stdev arguments.</p>
+<p>It is often very useful to be able to generate a sample from a specific distribution. To generate a sample of size 100 from a standard normal distribution (with mean 0 and standard deviation 1) we use the rnorm function. </p>
 
-<pre><code class="r">norm &lt;- rnorm(100)
+<pre><code class="r">norm &lt;- rnorm(100, mean = 0, sd = 1)
 head(norm)
 </code></pre>
 
-<pre><code>## [1] -0.99115  0.16671 -0.08847  1.16380 -0.53200  0.93675
+<pre><code>## [1] -0.0395 -0.1052  0.1132 -0.2661 -0.4648 -1.6235
 </code></pre>
 
   </article>
@@ -94,11 +95,11 @@ head(norm)
   </hgroup>
   <article>
     <ol>
-<li>Look up the rnorm function in help screen, what are three arguments?</li>
+<li>Look up the rnorm function in help screen, locate the three arguments we used.</li>
 <li>Draw 100 random numbers from a normal distribution with a mean of 3 and an sd of 2, assign it to an object &quot;a&quot;</li>
-<li>Find the mean number if your draw, how close was it to the true mean</li>
+<li>Find the mean number if your draw, how close was it to the true mean?</li>
 <li>Using the ?? tool, lookup the function for standard deviation <em>Hint</em> the ?? tool should not include spaces in the query.</li>
-<li>Drawing on what we learned last time, if &quot;a&quot; is a vector of 100 random normal draws, what is the syntax to get the 13th number in the vector?</li>
+<li>What is the 13th number in the your vector a?</li>
 </ol>
 
   </article>
@@ -110,11 +111,9 @@ head(norm)
     <h1>Generating random samples from other distributions</h1>
   </hgroup>
   <article>
-    <p>R has many distributions in the base package, including all commonly used in biological analysis. Depending on the distribution, each function has its own set of parameter arguments. For example, the &#39;rpois&#39; function is the random number generator for the Poisson distribution and it has only the parameter argument lambda. The rbinom function is the random number generator for the binomial distribution and it takes two arguments: size and prob. The size argument specifies the number of Bernoulli trials and the prob argument specifies the probability of a success for each trial. </p>
+    <p>R has many distributions in the base package, including all commonly used in biological analysis. Depending on the distribution, each function has its own set of parameter arguments. For example, the <em>&#39;rpois()&#39;</em> function is the random number generator for the Poisson distribution and it has only the parameter argument lambda. The <em>rbinom()</em> function is the random number generator for the binomial distribution and it takes two arguments: size and prob. The size argument specifies the number of Bernoulli trials and the prob argument specifies the probability of a success for each trial. Heather will pick up from here.</p>
 
 <p>For now, its sufficient to know that a possion distribution is commonly used for count data, and has only paramater lambda, which is both the expected mean and var</p>
-
-<p>Generating a random sample from a Poisson distribution with lambda=3</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -127,7 +126,7 @@ head(norm)
   <article>
     <ol>
 <li>Draw 100 values from a poisson with a lambda =3, assign it to an object a</li>
-<li>Draw 1000 values from a poisson with a lambda, assign it to an object b</li>
+<li>Draw 1000 values from a poisson with a lambda = 3, assign it to an object b</li>
 <li>Find the means of both draws, what is the difference in means?</li>
 </ol>
 
@@ -145,7 +144,7 @@ head(norm)
 
 <p>The <strong>dnorm()</strong> function will generate the density (or point) probability for a specific value for a normal distribution. This function is very useful for creating a plot of a density function of a distribution. In the list of the random number generator functions all the functions started with an &quot;r&quot;, similarly the density functions for all the distributions all start with a &quot;d&quot;. </p>
 
-<p>The other two functions <strong>pnorm()</strong>, and <strong>qnorm()</strong> will be covered during Biometry. </p>
+<p>The other two functions <strong>pnorm()</strong>, and <strong>qnorm()</strong> will be covered during Biometry. But it is sufficient to know they give the probability and quantile distributions. They are less commonly used.</p>
 </blockquote>
 
   </article>
@@ -158,7 +157,7 @@ head(norm)
   </hgroup>
   <article>
     <ol>
-<li>What is the point probability for a -1.96 for a normal of mean =0, sd=1</li>
+<li>What is the density of x =  -1.96 for a normal of mean =0, sd=1. </li>
 <li>We want to make a sequence of numbers, based on a given interval, look up, using ??sequence, and find the function that does this. <em>Hint</em> it is in the base package</li>
 <li>Create a sequence beginning at 0 and ending at 4, with .2 intervals, save this as object x.</li>
 </ol>
@@ -217,8 +216,28 @@ plot(x, dnorm(dens, 2, 0.5), type = &quot;l&quot;)
     
   </hgroup>
   <article>
-    <p>The base package has an immense number of plotting tools, let&#39;s look at the plot help screen</p>
+    <blockquote>
+<p>The base package has an immense number of plotting tools, let&#39;s look at the plot help screen.
+One nice option is to plot the distribution not in terms of raw counts, but in terms of density, so the histogram sums to 1</p>
+</blockquote>
 
+
+<div style='float:left;width:48%;' class='centered'>
+  <pre><code class="r">x &lt;- rnorm(100, mean = 0, sd = 2)
+hist(x)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">hist(x, freq = FALSE)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -257,8 +276,7 @@ plot(x, dnorm(dens, 2, 0.5), type = &quot;l&quot;)
 sample(x, 20)
 </code></pre>
 
-<pre><code>##  [1]  37  81  27  78  71  56  18  21  14  92   5   6  42 100  24  96  44
-## [18]  19  38  97
+<pre><code>##  [1] 59 15 97 26 52 35 64 17 86 22 81 85 33 14 78  5 71 27 49  7
 </code></pre>
 
 <h1>Sample with replacement</h1>
@@ -267,7 +285,7 @@ sample(x, 20)
 sample(x, 20, replace = TRUE)
 </code></pre>
 
-<pre><code>##  [1] 27 82  2 89 28 68 99 22 76  1 61 11 70 59  9 53 36 66 52 36
+<pre><code>##  [1] 92 11 37 29 42 38 90 43 98 73  7 99 48  7 79 61 56 68 93 15
 </code></pre>
 
   </article>

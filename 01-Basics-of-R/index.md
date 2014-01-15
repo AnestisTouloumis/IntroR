@@ -1,6 +1,6 @@
 ---
 title       : Basics of R
-subtitle    : 
+subtitle    : Diving in.
 author      : Ben Weinstein
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -39,7 +39,7 @@ Running Commands in the Console
 
 The R console returns objects based on functions and expressions.
 
-<img src="C:/Users/Jorge/Documents/Rcourse/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 500px;"/> 
+<img src="C:/Users/Ben/Documents/GitHub/IntroR/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 500px;"/> 
 
 ---
 
@@ -50,7 +50,7 @@ The R console returns objects based on functions and expressions.
 
 1. What is 17 multiplied by 365?
 
-2. What is 7^3?
+2. What is 7 cubed?
 
 ---
 Creating Objects
@@ -139,12 +139,14 @@ c
 
 3. Create an object that is your age. Create another object that is the age of the person to your right. Find the difference between these objects. 
 
+4. Set x to equal seven, set y to equal 10. What is x * y * y
+
 ---
 Combining objects - Vectors!
 -------------------
 
 R has 5 common data structures, we will learn today about the simplest - vectors.
-Vectors are one dimensional strings of numbers, characters of objectsA vector is made using the function c(), explained later today.
+Vectors are one dimensional strings of numbers, characters of objects. A vector is made using the function *c()*, explained later today.
 
 Combine numbers into a vector
 
@@ -261,7 +263,7 @@ mean(c(3, 4, 5))
 
 ---
 
-Functions can act on an objects 
+Functions can act on objects 
 =================
 
 ```r
@@ -336,12 +338,19 @@ Installing a package just download its to your computer. To actually use a funct
 ---
 
 You are not alone Part I - The R Help Screen and User Community
-
+=====================
 
 ```r
 ## ss 1.1.3: Online Help
 `?`(mean  # Equivalent to help(mean) 
 )
+```
+
+```
+## starting httpd help server ... done
+```
+
+```r
 
 `?`(sort  # Try, also, apropos ('sor') 
 )
@@ -355,7 +364,7 @@ You are not alone Part I - The R Help Screen and User Community
 ---
 
 You are not alone Part II - The R Help Screen and User Community
--------------------------------
+====================
 ![alt text](http://img78.imageshack.us/img78/196/wheelsel6.gif)
 
 ---
@@ -364,3 +373,16 @@ You are not alone Part II - The R Help Screen and User Community
 ==========
 
 type in `quit()` or `q()` and answer `Y` to quit. Always remember to save scripts. For now we will not save workspaces!
+
+---&twocol
+
+Quick Review
+------
+- 1. Find the product of 17 multiplied by .75
+- 2. Save this product to an object x
+- 3. Find the product of 17 multiplied by .05, save as object y
+- 4. Create a vector of x x y y x
+- 5. How would you call the third position in this vector?
+- 6. The function seq will be used repeatedly throughout this course
+
+  a. Look at the help screen for seq, what does it do?
