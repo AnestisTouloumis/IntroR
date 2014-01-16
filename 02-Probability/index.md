@@ -40,7 +40,7 @@ head(norm)
 ```
 
 ```
-## [1] -0.0395 -0.1052  0.1132 -0.2661 -0.4648 -1.6235
+## [1] 1.7937 0.6416 0.6053 0.7253 0.7048 0.3575
 ```
 
 
@@ -134,6 +134,14 @@ plot(x, dnorm(dens, 2, 0.5), type = "l")
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 
+---
+
+**Try It!**
+------------
+
+16. Plot your density function. Label your axis, "This is the x axis", "This is the y axis"
+17. Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?
+
 ---&twocol
 
 > The base package has an immense number of plotting tools, let's look at the plot help screen.
@@ -158,15 +166,6 @@ hist(x, freq = FALSE)
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
 
-
----
-
-**Try It!**
-------------
-
-16. Plot your density function. Label your axis, "This is the x axis", "This is the y axis"
-17. Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?
-
 ---
 
 Very Brief Intro to Sampling
@@ -187,7 +186,8 @@ sample(x, 20)
 ```
 
 ```
-##  [1] 59 15 97 26 52 35 64 17 86 22 81 85 33 14 78  5 71 27 49  7
+##  [1]  38   5 100  70  31  75  37  25  65  98  21  14  77  72   4  76  62
+## [18]  22  33  50
 ```
 
 
@@ -200,7 +200,8 @@ sample(x, 20, replace = TRUE)
 ```
 
 ```
-##  [1] 92 11 37 29 42 38 90 43 98 73  7 99 48  7 79 61 56 68 93 15
+##  [1]   2  35  95  44  38  56  76  31  77   9  77  44 100  90  62  26  62
+## [18]  24  70  61
 ```
 
 

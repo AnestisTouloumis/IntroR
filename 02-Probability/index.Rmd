@@ -120,6 +120,14 @@ dens<-dnorm(x, 2, 0.5)
 plot(x, dnorm(dens, 2, 0.5), type = "l")
 ```
 
+---
+
+**Try It!**
+------------
+
+16. Plot your density function. Label your axis, "This is the x axis", "This is the y axis"
+17. Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?
+
 ---&twocol
 
 > The base package has an immense number of plotting tools, let's look at the plot help screen.
@@ -135,15 +143,6 @@ hist(x)
 ```{r}
 hist(x,freq=FALSE)
 ```
-
-
----
-
-**Try It!**
-------------
-
-16. Plot your density function. Label your axis, "This is the x axis", "This is the y axis"
-17. Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?
 
 ---
 

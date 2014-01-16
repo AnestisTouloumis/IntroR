@@ -82,7 +82,7 @@
 head(norm)
 </code></pre>
 
-<pre><code>## [1] -0.0395 -0.1052  0.1132 -0.2661 -0.4648 -1.6235
+<pre><code>## [1] 1.7937 0.6416 0.6053 0.7253 0.7048 0.3575
 </code></pre>
 
   </article>
@@ -213,6 +213,20 @@ plot(x, dnorm(dens, 2, 0.5), type = &quot;l&quot;)
 
       <slide class="" id="slide-11" style="background:;">
   <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Plot your density function. Label your axis, &quot;This is the x axis&quot;, &quot;This is the y axis&quot;</li>
+<li>Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
     
   </hgroup>
   <article>
@@ -242,20 +256,6 @@ hist(x)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-12" style="background:;">
-  <hgroup>
-    <h2><strong>Try It!</strong></h2>
-  </hgroup>
-  <article>
-    <ol>
-<li>Plot your density function. Label your axis, &quot;This is the x axis&quot;, &quot;This is the y axis&quot;</li>
-<li>Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?</li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
       <slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h1>Very Brief Intro to Sampling</h1>
@@ -276,7 +276,8 @@ hist(x)
 sample(x, 20)
 </code></pre>
 
-<pre><code>##  [1] 59 15 97 26 52 35 64 17 86 22 81 85 33 14 78  5 71 27 49  7
+<pre><code>##  [1]  38   5 100  70  31  75  37  25  65  98  21  14  77  72   4  76  62
+## [18]  22  33  50
 </code></pre>
 
 <h1>Sample with replacement</h1>
@@ -285,7 +286,8 @@ sample(x, 20)
 sample(x, 20, replace = TRUE)
 </code></pre>
 
-<pre><code>##  [1] 92 11 37 29 42 38 90 43 98 73  7 99 48  7 79 61 56 68 93 15
+<pre><code>##  [1]   2  35  95  44  38  56  76  31  77   9  77  44 100  90  62  26  62
+## [18]  24  70  61
 </code></pre>
 
   </article>
