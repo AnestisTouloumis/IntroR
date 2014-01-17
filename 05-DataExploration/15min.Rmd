@@ -1,0 +1,74 @@
+10min Group Assignment - Answers
+=================
+Choose one of the following challenges.
+
+1. Plot the ranges of bill sizes using geom_linerange() for each clade. *Hint* to get a vector of clade names, use levels(traits$Clade)
+
+2. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
+
+3. Does the number of species in a genus relate to the variance in body size?
+
+1.
+```{r}
+#read in the data
+traits<-read.csv("C:/Users/Ben/Documents/GitHub/IntroR/05-DataExploration/Traits.csv",row.names=1)
+
+#Get a list of all the clades
+clades<-levels(traits$Clade)
+clades
+
+#Create a blank list to store outputs
+out<-data.frame()
+
+#For each clade, subset the trait matrix to get just members of that clade
+for (x in 1:length(clades)){
+  cladetoSelect<-clades[x]
+  print(cladetoSelect)
+  cladeD<-traits[traits$Clade == cladetoSelect,]
+  #Get the row of the species with the largest bill
+  rowL<-which.max(cladeD$Bill)
+  #Get the fow of species with the smallest bill
+  rowS<-which.min(cladeD$Bill)
+  #Subset the clade data to get those rows
+  out<-rbind(out,cladeD[c(rowL,rowS),])
+}
+
+#plot the results
+
+```
+
+2. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
+
+```{r}
+#Create new column for the w/m ratio
+traits$w_m<-traits$WingChord/traits$Mass
+
+ggplot(traits,aes(x=Mass,y=WingChord,col=Clade)) + geom_point() + geom_smooth(method="lm",aes(group=1)) + facet_wrap(~Clade)
+ggplot(traits,aes(x=Species,y=w_m)) + geom_point() + geom_smooth(aes(group=1),method="lm") + facet_wrap(~Clade,scales="free")                                                                                         
+```
+
+3. Does the number of species in a genus relate to the variance in body size?
+
+```{r}
+#Find the number of species in a genus using a cotingency table
+sp_g<-data.frame(table(traits$Genus))
+
+#name the columns
+colnames(sp_g)<-c("Genus","N")
+
+for (i in 1:nrow(sp_g)){
+genus<-sp_g[i,"Genus"]
+#subset the data for that genus
+genus_t<-traits[traits$Genus == genus,]
+#Get the variance in bill size and place it in an output
+sp_g[i,"Var_bill"]<-var(genus_t$Bill)
+}
+
+#plot the result
+ggplot(sp_g,aes(x=N,y=Var_bill)) + geom_point() + geom_smooth()
+ggplot(sp_g,aes(x=N,y=Var_bill)) + geom_point() + geom_smooth(method="lm") + ylim(0,12)
+```
+
+```{r}
+
+ggplot(traits,aes(x=Bill)) + geom_histogram() + facet_wrap(~Clade)

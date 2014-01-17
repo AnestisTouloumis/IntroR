@@ -28,7 +28,7 @@ sample(x, 5)
 ```
 
 ```
-## [1]  1.856  8.253  8.575 18.531  5.367
+## [1]  8.608  5.111  8.002 11.465 19.875
 ```
 
 
@@ -59,8 +59,8 @@ Data frames are usually read in from file, but R comes with many practice datase
 head(iris)
 ============
 
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Thu Dec 12 16:29:10 2013 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:11:54 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
@@ -99,8 +99,8 @@ Dataframe syntax and subsetting
 R has many powerful subset operators and mastering them will allow you to easily perform complex operation on any kind of dataset. Allows you to manipulate data very succinctly. Dataframes are akin to a series of vectors combined into a tabular structure. 
 
 **head(iris)**
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Thu Dec 12 16:29:10 2013 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:11:55 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
@@ -175,8 +175,8 @@ Dataframes can be indexed for both rows and columns
 =================================================
 Get all rows and the first two columns
 **a<-iris[,1:2]**
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Thu Dec 12 16:29:10 2013 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:11:55 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> </TR>
@@ -191,11 +191,11 @@ Get all rows and the first two columns
 ---
 **Try It!**
 ------------
-5. What is the 9th entry of the Sepal.Width column?
-6. How would you get all entries for the 17th row?
-7. Return an object with the 1 4 and 7 rows of the dataframe?
-8. Use the seq command to get all odd rows in the dataset?
-9. What happens when you use negative numbers?
+5. What is the 9th entry of the Sepal.Width column? Call it x.
+6. How would you get all entries of iris for the 17th row?
+7. Return an object with the 1 4 and 7 rows of the iris dataframe?
+8. Use the seq command to get all odd rows in the iris dataset?
+9. What happens when you use negative numbers? *Hint* Use *dim()* on the original and final objects. 
 
 ---
 Using logical statements
@@ -227,8 +227,8 @@ a <- iris[logi, ]
 ```
 
 
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Thu Dec 12 16:29:10 2013 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:11:55 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -294,8 +294,14 @@ Many different types of logical statements can be used to subset data.
 
 For all types of data, if we want a specific value/character/factor we use ==
 
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Thu Dec 12 16:29:11 2013 -->
+
+```r
+Only4 <- iris[iris$Petal.Length == 4, ]
+```
+
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:11:55 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 54 </TD> <TD align="right"> 5.50 </TD> <TD align="right"> 2.30 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
@@ -310,8 +316,14 @@ For all types of data, if we want a specific value/character/factor we use ==
 Get only records from the species versicolor
 ==============================================
 
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Thu Dec 12 16:29:11 2013 -->
+
+```r
+Vers_Only <- iris[iris$Species == "versicolor", ]
+```
+
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:11:56 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -336,8 +348,8 @@ subsetX <- iris[iris$Petal.Length > 4 & iris$Species == "versicolor", ]
 ```
 
 
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Thu Dec 12 16:29:11 2013 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:11:56 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -382,9 +394,10 @@ Today we covered basic data manipulation of dataframes in R
 > 4. Logical Statements
 
 ---
+Next Time
+==========
 
-Next time we will cover importing data, more subsetting and sampling, and introduction to bivariate plotting using ggplot.
-==================
-
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
-
+- For loops
+- Outputing loops to an object
+- Indexing Lists
+- Flow Statetments - If, Break, Next

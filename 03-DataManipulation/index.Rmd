@@ -129,11 +129,11 @@ xtable(head(a))
 ---
 **Try It!**
 ------------
-5. What is the 9th entry of the Sepal.Width column?
-6. How would you get all entries for the 17th row?
-7. Return an object with the 1 4 and 7 rows of the dataframe?
-8. Use the seq command to get all odd rows in the dataset?
-9. What happens when you use negative numbers?
+5. What is the 9th entry of the Sepal.Width column? Call it x.
+6. How would you get all entries of iris for the 17th row?
+7. Return an object with the 1 4 and 7 rows of the iris dataframe?
+8. Use the seq command to get all odd rows in the iris dataset?
+9. What happens when you use negative numbers? *Hint* Use *dim()* on the original and final objects. 
 
 ---
 Using logical statements
@@ -204,10 +204,13 @@ Many different types of logical statements can be used to subset data.
 
 For all types of data, if we want a specific value/character/factor we use ==
 
+```{r}
+Only4<-iris[iris$Petal.Length==4,]
+```
+
 ```{r, results = 'asis', comment = NA,echo=FALSE}
 options(xtable.type = 'html')
 #Get records with petal length of 4
-Only4<-iris[iris$Petal.Length==4,]
 xtable(head(Only4))
 ```
 
@@ -215,8 +218,11 @@ xtable(head(Only4))
 Get only records from the species versicolor
 ==============================================
 
-```{r,results = 'asis', comment = NA,echo=FALSE}
+```{r}
 Vers_Only<-iris[iris$Species=="versicolor",]
+```
+
+```{r,results = 'asis', comment = NA,echo=FALSE}
 options(xtable.type = 'html')
 xtable(head(Vers_Only))
 ```
@@ -270,11 +276,10 @@ Today we covered basic data manipulation of dataframes in R
 > 4. Logical Statements
 
 ---
+Next Time
+==========
 
-Next time we will cover importing data, more subsetting and sampling, and introduction to bivariate plotting using ggplot.
-==================
-
-```{r,echo=FALSE,fig.width=8,warning=FALSE,message=FALSE}
-require(ggplot2)
-ggplot(iris,aes(Petal.Width,Petal.Length,col=Species,shape=Species)) + geom_point() + geom_smooth(method="lm")
-```
+- For loops
+- Outputing loops to an object
+- Indexing Lists
+- Flow Statetments - If, Break, Next

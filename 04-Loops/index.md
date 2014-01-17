@@ -534,3 +534,20 @@ for (x in 1:5) {
 
 
  5. Create a for loop that computes x * 2 for 1:100, and place the output in a list. However, break the loop when the  square root of the output of a statement is greater than 8.4. What is the last x value reported?
+ 
+---
+What did we learn today?
+========================
+
+- For loops
+- Outputing loops to an object
+- Indexing Lists
+- Flow Statetments - If, Break, Next
+ 
+---
+
+Next time we will cover importing data, more subsetting and sampling, and introduction to bivariate plotting using ggplot.
+==================
+
+![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-20.png) 
+

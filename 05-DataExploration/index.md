@@ -29,13 +29,13 @@ Avoid Spaces, Special Characters, or hanging lines of data.
 ---
 
 ```r
-traits <- read.csv("C:/Users/Jorge/Documents/IntroR/05-DataExploration/Traits.csv", 
+traits <- read.csv("C:/Users/Ben/Documents/GitHub/IntroR/05-DataExploration/Traits.csv", 
     row.names = 1)
 ```
 
 ---
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Tue Jan 14 11:53:33 2014 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Fri Jan 17 10:14:29 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Clade </TH> <TH> Genus </TH> <TH> Species </TH> <TH> double </TH> <TH> English </TH> <TH> Bill </TH> <TH> Mass </TH> <TH> WingChord </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Coquettes </TD> <TD> Adelomyia </TD> <TD> melanogenys </TD> <TD> Adelomyia melanogenys </TD> <TD> Speckled Hummingbird </TD> <TD align="right"> 15.04 </TD> <TD align="right"> 4.25 </TD> <TD align="right"> 55.87 </TD> </TR>

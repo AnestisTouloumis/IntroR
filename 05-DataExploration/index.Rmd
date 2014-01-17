@@ -28,7 +28,7 @@ Avoid Spaces, Special Characters, or hanging lines of data.
 
 ---
 ```{r,warning=FALSE,message=FALSE}
-traits<-read.csv("C:/Users/Jorge/Documents/IntroR/05-DataExploration/Traits.csv",row.names=1)
+traits<-read.csv("C:/Users/Ben/Documents/GitHub/IntroR/05-DataExploration/Traits.csv",row.names=1)
 ```
 ---
 ```{r, results = 'asis', comment = NA,message=FALSE,echo=FALSE}
@@ -184,8 +184,13 @@ ggplot(coq,aes(x=Species,y=WingChord,col=Bill,size=Mass)) + geom_point() + facet
 ---
 10min Group Assignment
 =================
+Choose one of the following challenges.
 
-Come up with a simple question and represent it graphically
+1. Plot the ranges of bill sizes using geom_linerange() for each clade.
+
+2. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
+3. Does the number of species in a genus relate to the variance in body size?
+
 
 ---
 Exporting Dataframes
