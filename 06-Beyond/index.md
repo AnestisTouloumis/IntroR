@@ -307,7 +307,7 @@ Make your life easier, safer, and more fun.
 * Download and install the platform-specific version of Git (not GitHub), default options   work well.
 * Configure Git with global commands. I have found this step necessary both times I     ran through this process. Open up the bash version of Git and type the following:         
 
-git config global user.name your GitHub account name                                                     git config global user.email your email
+git config –global user.name “your GitHub account name”                                                     git config –global user.email “your email”
 
 * Open Rstudio and set the path to Git executable. Go to Tools > Options > Git/SVN       
 
@@ -315,7 +315,7 @@ git config global user.name your GitHub account name                      
 Make a repo on github.com
 ==========================
 
-A repository is the location and name for all the files associated with a particular project. The first step is to log into your GitHub account and create a new repository. Make sure you check the box Initialize this repository with a README. 
+A repository is the location and name for all the files associated with a particular project. The first step is to log into your GitHub account and create a new repository. Make sure you check the box ‘Initialize this repository with a README.’ 
 
 ---
 Clone your repo
@@ -323,7 +323,7 @@ Clone your repo
 
 * Open Rstudio and go to Project > Create Project > Version Control > Git and paste the url in the github repo
 
-* Now do some work in your new R project and create and save some files. The next step is to commit your work  essentially making a copy of all of your script files (i.e., .R files) associated with the R project.
+* Now do some work in your new R project and create and save some files. The next step is to ‘commit’ your work – essentially making a copy of all of your script files (i.e., .R files) associated with the R project.
 
 *Commit your work, give it some description
 

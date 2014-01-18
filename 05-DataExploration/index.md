@@ -35,7 +35,7 @@ traits <- read.csv("C:/Users/Ben/Documents/GitHub/IntroR/05-DataExploration/Trai
 
 ---
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:14:29 2014 -->
+<!-- Fri Jan 17 17:41:18 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Clade </TH> <TH> Genus </TH> <TH> Species </TH> <TH> double </TH> <TH> English </TH> <TH> Bill </TH> <TH> Mass </TH> <TH> WingChord </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Coquettes </TD> <TD> Adelomyia </TD> <TD> melanogenys </TD> <TD> Adelomyia melanogenys </TD> <TD> Speckled Hummingbird </TD> <TD align="right"> 15.04 </TD> <TD align="right"> 4.25 </TD> <TD align="right"> 55.87 </TD> </TR>
@@ -258,8 +258,11 @@ ggplot(coq, aes(x = Species, y = WingChord, col = Bill, size = Mass)) + geom_poi
 ---
 10min Group Assignment
 =================
+Choose one of the following challenges.
 
-Come up with a simple question and represent it graphically
+1. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
+
+2. Does the number of species in a genus relate to the variance in body size?
 
 ---
 Exporting Dataframes

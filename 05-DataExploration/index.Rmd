@@ -186,11 +186,9 @@ ggplot(coq,aes(x=Species,y=WingChord,col=Bill,size=Mass)) + geom_point() + facet
 =================
 Choose one of the following challenges.
 
-1. Plot the ranges of bill sizes using geom_linerange() for each clade.
+1. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
 
-2. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
-3. Does the number of species in a genus relate to the variance in body size?
-
+2. Does the number of species in a genus relate to the variance in body size?
 
 ---
 Exporting Dataframes
