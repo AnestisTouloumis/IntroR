@@ -3,10 +3,10 @@ title       : Basics of R
 subtitle    : Diving in.
 author      : Ben Weinstein
 job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : io2012    # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
+widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
@@ -39,7 +39,7 @@ Running Commands in the Console
 
 The R console returns objects based on functions and expressions.
 
-<img src="C:/Users/Ben/Documents/GitHub/IntroR/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 500px;"/> 
+<img src="C:/Users/Jorge/Documents/IntroR/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 600px;"/> 
 
 ---
 
@@ -291,3 +291,10 @@ Quick Review
 - 6. The function seq will be used repeatedly throughout this course
 
   a. Look at the help screen for seq, what does it do?
+  
+---
+<style>
+pre {
+  margin-bottom: -10px;
+}
+</style>
