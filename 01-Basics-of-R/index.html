@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basics of R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Basics of R">
+  <meta name="author" content="Ben Weinstein">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/IR_BLACK.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+<link rel="stylesheet" href = "assets/css/slidify.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>Basics of R</h1>
+        <h2>Diving in.</h2>
+        <p>Ben Weinstein<br/></p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h1><strong>Introduction to R</strong></h1>
+  </hgroup>
+  <article>
+    <p>R is a versatile, open source programming/scripting language that&#39;s useful both for statistics and data science. </p>
+
+<ul>
+<li>Public domain software </li>
+<li>Superior (if not just comparable) to commercial alternatives</li>
+<li>Available on all platforms</li>
+<li>Not just for statistics, but also general purpose programming</li>
+<li>Is object oriented and functional</li>
+<li>Large and growing community of peers</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h1><strong>How to run <code>R</code></strong>  </h1>
+  </hgroup>
+  <article>
+    <p>Within R studio, there are 4 parts to R</p>
+
+<ul>
+<li>Console: Where commands are run</li>
+<li>Scripts: Where commands are written</li>
+<li>Environments: Where objects are stored</li>
+<li>Plots: Where data is viewed</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h1>Running Commands in the Console</h1>
+  </hgroup>
+  <article>
+    <p>The R console returns objects based on functions and expressions.</p>
+
+<p><img src="C:/Users/Jorge/Documents/IntroR/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 600px;"/> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <p><img src="http://www.lifewithlevi.com/wp-content/uploads/2012/02/Happy-Squirrel-Driking.jpg" alt="Drawing" style="width: 300px;"/> </p>
+
+<h2><strong>Try It!</strong></h2>
+
+<ol>
+<li><p>What is 17 multiplied by 365?</p></li>
+<li><p>What is 7 cubed?</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h1>Creating Objects</h1>
+  </hgroup>
+  <article>
+    <p>All expressions can be saved as an object, this is the fundamental unit in R. To create an object from an expression we use the assignment operater &lt;-</p>
+
+<p><strong>Assignment operator</strong>
+<code>&lt;-</code> is the assignment operator. Assigns values on the right to objects on the left.</p>
+
+<pre><code class="r">a &lt;- 12 * 180
+a
+</code></pre>
+
+<pre><code>## [1] 2160
+</code></pre>
+
+<p>The object a is now saved as the output of the expression 12*180</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h1><em>R tips</em></h1>
+  </hgroup>
+  <article>
+    <p><em>Use <code>#</code> before an expression signs to &#39;comment&#39; your script. Good scripts and (homework) have comments before every major block of code. Anything to the right of a <code>#</code> is ignored.</em></p>
+
+<pre><code class="r">print(&quot;hello world&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;hello world&quot;
+</code></pre>
+
+<pre><code class="r">
+# print (&#39;hello world&#39;)
+
+print(&quot;hello world&quot;)  #R ignores everything to the RIGHT of comments
+</code></pre>
+
+<pre><code>## [1] &quot;hello world&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h1>Expressions using objects</h1>
+  </hgroup>
+  <article>
+    <p>The beauty of R is that objects can be combined into other, larger, and more complex objects!</p>
+
+<pre><code class="r">a &lt;- 8 * 10
+b &lt;- 2 * 10
+c &lt;- a * b
+c
+</code></pre>
+
+<pre><code>## [1] 1600
+</code></pre>
+
+<pre><code class="r"># Equivalent to
+c &lt;- 8 * 10 * 2 * 10
+c
+</code></pre>
+
+<pre><code>## [1] 1600
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li><p>Create an object that is your age. Create another object that is the age of the person to your right. Find the difference between these objects. </p></li>
+<li><p>Set x to equal seven, set y to equal 10. What is x * y * y</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Combining objects - Vectors!</h2>
+  </hgroup>
+  <article>
+    <p>R has 5 common data structures, we will learn today about the simplest - vectors.
+Vectors are one dimensional strings of numbers, characters of objects. A vector is made using the function <em>c()</em>, explained later today.</p>
+
+<p>Combine numbers into a vector</p>
+
+<pre><code class="r">a &lt;- c(3, 4, 5)
+a
+</code></pre>
+
+<pre><code>## [1] 3 4 5
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h1>Vectors!</h1>
+  </hgroup>
+  <article>
+    <p>Combine characters into a vector</p>
+
+<pre><code class="r">b &lt;- c(&quot;q&quot;, &quot;r&quot;, &quot;s&quot;)
+b
+</code></pre>
+
+<pre><code>## [1] &quot;q&quot; &quot;r&quot; &quot;s&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h1>Vectors!</h1>
+  </hgroup>
+  <article>
+    <p>Combine objects into a vector</p>
+
+<pre><code class="r">a &lt;- 4 * 7
+b &lt;- 6 * 5
+g &lt;- 9 * 2
+
+d &lt;- c(a, b, g)
+d
+</code></pre>
+
+<pre><code>## [1] 28 30 18
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h1>Properties of Vectors</h1>
+  </hgroup>
+  <article>
+    <p>Vectors have positions, these positions are ordered and can be called using name_vector[position]</p>
+
+<pre><code class="r">a &lt;- 8 * 9
+b &lt;- 2 * 3
+d &lt;- c(a, b)
+
+d[1]
+</code></pre>
+
+<pre><code>## [1] 72
+</code></pre>
+
+<pre><code class="r">d[2]
+</code></pre>
+
+<pre><code>## [1] 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li><p>What is the 9th and 12th position of seq(1,27,.5)? </p></li>
+<li><p>Bonus! Can you find those positions simultaneously</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h1>Functions</h1>
+  </hgroup>
+  <article>
+    <p>A function is a saved object that performs a task given inputs. All functions are made up of smaller objects. Functions are used in the format output&lt;-name_of_function(inputs)</p>
+
+<pre><code class="r"># The sum of a vector
+sum(c(3, 4, 5))
+</code></pre>
+
+<pre><code>## [1] 12
+</code></pre>
+
+<pre><code class="r">
+# The mean of a vector
+mean(c(3, 4, 5))
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h1>Functions can act on objects </h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">a &lt;- c(3, 4, 5)
+mean(a)
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h1>How to use a function?</h1>
+  </hgroup>
+  <article>
+    <p>All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and ususally sample examples at the very bottom.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h1><em>R tips</em></h1>
+  </hgroup>
+  <article>
+    <p>While many R functions are easy to guess their name, most functions are abbreviated to save time and space, you can search for functions (only from installed packages) by using ??query, eg. ??robust with search for any functions whose help screens contain the word robust</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol class = "build">
+<li>What is the median of 34, 16, 105, 27? <em>Hint</em> functions are often named intuitively</li>
+<li>What does the function &#39;range&#39; do, what is sample example in the help file?</li>
+<li>Bonus! Is mean(4,5) different than mean(c(4,5))?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h1>Packages</h1>
+  </hgroup>
+  <article>
+    <p>We will be exploring functions in much greater detail throughout this course. Functions are the soul of R, that is why we use it. Functions are kept inside packages, some of which come preinstalled into R - others must be downloaded online</p>
+
+<p>To check out the wide world of packages: INSERT LINK and search with your favorite keyword! Ecology, paleo, dispersal, population modeling, economics!</p>
+
+<p>Often you will be asked to install a package to access a certain library of functions</p>
+
+<pre><code class="r"># To install any new package install.packages(&#39;picante&#39;)
+
+# pick a closeby mirror, say okay if it asks to create a new folder
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h1><em>R tips</em></h1>
+  </hgroup>
+  <article>
+    <p>Installing a package just download its to your computer. To actually use a function in R from an outside package you have to &quot;require&quot; it at the top of the script, this let&#39;s R know what packages to load in, and not waste time with all potential functions. Good scripts (and homeworks) have a series of require(name_of_library) at the top of the script in an orderly fashion</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong> </h2>
+  </hgroup>
+  <article>
+    <ol>
+<li><p>Find a fascinating package in the search query. What is it? What is one interesting function?</p></li>
+<li><p>Install the package to your computer. </p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h1>You are not alone Part I - The R Help Screen and User Community</h1>
+  </hgroup>
+  <article>
+    <pre><code class="r">## ss 1.1.3: Online Help
+`?`(mean  # Equivalent to help(mean) 
+)
+
+`?`(sort  # Try, also, apropos (&#39;sor&#39;) 
+)
+# List all functions where &#39;sort&#39; is part of the name
+`?`(`?`(sort  # Note that the argument is &#39;sort&#39; 
+))
+# List functions with &#39;sort&#39; in the help page title or as an alias
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h1>You are not alone Part II - The R Help Screen and User Community</h1>
+  </hgroup>
+  <article>
+    <p><img src="http://img78.imageshack.us/img78/196/wheelsel6.gif" alt="alt text"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h1><strong>Quitting R</strong></h1>
+  </hgroup>
+  <article>
+    <p>type in <code>quit()</code> or <code>q()</code> and answer <code>Y</code> to quit. Always remember to save scripts. For now we will not save workspaces!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Quick Review</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>1. Find the product of 17 multiplied by .75</li>
+<li>2. Save this product to an object x</li>
+<li>3. Find the product of 17 multiplied by .05, save as object y</li>
+<li>4. Create a vector of x x y y x</li>
+<li>5. How would you call the third position in this vector?</li>
+<li><ol>
+<li>The function seq will be used repeatedly throughout this course</li>
+</ol>
+
+<p>a. Look at the help screen for seq, what does it do?</p></li>
+</ul>
+
+<hr>
+
+<style>
+pre {
+  margin-bottom: -10px;
+}
+</style>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
