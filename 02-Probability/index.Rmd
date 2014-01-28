@@ -5,7 +5,7 @@ author      : Ben Weinstein
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : IR_BLACK      # 
 widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -168,6 +168,15 @@ Sample with replacement
 x<-1:100
 sample(x,20,replace=TRUE)
 ```
+
+---
+
+**Try It!**
+------------
+
+1. Draw 20 random samples of integers from 100 to 200. 
+2. Draw 6 random letters from the alphabet (using the vector letters)
+3. Sample with replacement from  a vector of 0,1 twenty times. 
 
 ---
 

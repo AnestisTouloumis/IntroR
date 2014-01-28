@@ -5,7 +5,7 @@ author      : Ben Weinstein
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : IR_BLACK      # 
 widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -40,7 +40,7 @@ head(norm)
 ```
 
 ```
-## [1] 1.7937 0.6416 0.6053 0.7253 0.7048 0.3575
+## [1] -0.1228 -0.6575 -0.8943  1.1505 -0.1155  2.1797
 ```
 
 
@@ -186,8 +186,7 @@ sample(x, 20)
 ```
 
 ```
-##  [1]  38   5 100  70  31  75  37  25  65  98  21  14  77  72   4  76  62
-## [18]  22  33  50
+##  [1] 67  6 72 65 66 12 78 63 14 80 86 33 25 19 39 18 42 15 68  1
 ```
 
 
@@ -200,12 +199,20 @@ sample(x, 20, replace = TRUE)
 ```
 
 ```
-##  [1]   2  35  95  44  38  56  76  31  77   9  77  44 100  90  62  26  62
-## [18]  24  70  61
+##  [1] 79 46 69 66 45  5 87 29 81 77 19 50 87 22 34  6 78 17 68 33
 ```
 
 
 ---
+
+**Try It!**
+------------
+
+1. Draw 20 random samples of integers from 100 to 200. 
+2. Draw 6 random letters from the alphabet (using the vector letters)
+3. Sample with replacement from  a vector of 0,1 twenty times. 
+---
+
 
 What did we learn today?
 ---------------------

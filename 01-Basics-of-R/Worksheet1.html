@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Worksheet #1 - Basics of R</title>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Worksheet #1 - Basics of R</h1>
+
+<p>The most important aspect to learn about R, and perhaps programming in general, is that tasks are completed sequentially. Large functions are objects built on small steps. Code is written into the script, run in the console, and plots are rendered on the right pane to visualize results.  </p>
+
+<p>The goal of this worksheet is begin enganging with R on basic levels, including computing arithmatic, saving objects, and subsetting vectors. </p>
+
+<h2>Basic Math</h2>
+
+<p>R can compute all commonly used arithmatic operations. The user inputs the parameters into a function, or specifies the relationship among objects, the result is returned in the console.</p>
+
+<ol>
+<li>What is the sum of 856 + 765?</li>
+<li>What is 104 multiplied by 187</li>
+<li>What is 1 divided by 12 + 47</li>
+</ol>
+
+<h2>Vectors</h2>
+
+<p>The most straightforward way to combine numbers, letters or logicals is in a <em>vector</em>. Vectors are created directly using the function <em>c()</em>. Vectors have positions, beginning at 1. To call a position, nameofvector[indexnumber]</p>
+
+<ol>
+<li>Create a vector of 1 to 5, save it as object x</li>
+<li>Create a vector of 12, 17, 9, 11, save it as object y</li>
+<li>Create a vector of both x and y together</li>
+<li>Run g&lt;-seq(11,333,3), what is the 68 position in this vector?</li>
+<li>How do you call both the 68 position and 79 simultaneously?</li>
+</ol>
+
+<h2>Functions</h2>
+
+<p>Functions are the heart of R. They sourced files allow users to call code created and distributed within packages, or sent from friends! Functions have three essential parts.</p>
+
+<ul>
+<li>A name, more accuracteuly, a namespace, which declares which function to use.</li>
+<li>Input parameters or arguments which tell the function what you want to do.</li>
+<li>Output, either saved as a object, or returned directly into the console.</li>
+</ul>
+
+<ol>
+<li>What is the mean of vector of 1:33</li>
+<li>What is the sum of 1 divided by 5 + 10, plus 1 divided by 6 * 46</li>
+<li>What is the cube root of natural log (8)</li>
+<li>What is the cube root of log based 10 (8)</li>
+</ol>
+
+<p><strong>Getting help on functions</strong></p>
+
+<p>The secret to R is a robust sense of adventure and confidence. There are tens of thousands of functions, in thousands of packages. One cannot expect to ever &ldquo;know&rdquo; R, this is simply the wrong mindset. Instead of focusing on memorizing the syntaxes, functions and design - place the following skill above all others: <strong>Reading the help screen</strong></p>
+
+<p>All published functions have help screens. They have a standardized format. At the top is a brief <em>description</em> explains the goal of the function.There may be a small paragraph on <strong>usage</strong>, especially in the function takes on multiple forms. The <strong>arguments</strong> are described next, each argument is described in a row, and should specify whether there is a default. All arguments without defaults are mandatory. This is followed by additional <strong>details</strong>, other sources, and citations. Finally the <strong>value</strong> section reports the format of the output. Most importantly, good help screens come with reproducible code <strong>examples</strong> at the very bottom. This code should run without any additional lines, thereby giving the user a good idea about the format of the code.</p>
+
+<ol>
+<li>Look up the help screen for the function cut; What is the goal of this function?</li>
+<li>Make a vector x&lt;-0:100; cut this vector into 2 pieces. What is the default breaks?</li>
+<li>What does the argument dig.lab do?</li>
+<li>Cut the vector into 3 pieces</li>
+<li>Specify the breaks to be exactly intervals of 25 <em>hint</em> use a vector!</li>
+</ol>
+
+</body>
+
+</html>
