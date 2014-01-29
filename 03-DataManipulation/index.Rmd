@@ -5,7 +5,7 @@ author      : Ben Weinstein
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : IR_BLACK      # 
 widgets     : [quiz]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -279,7 +279,13 @@ Today we covered basic data manipulation of dataframes in R
 Next Time
 ==========
 
-- For loops
-- Outputing loops to an object
-- Indexing Lists
-- Flow Statetments - If, Break, Next
+1. For loops
+2. Outputing loops to an object
+3. Indexing Lists
+4. Flow Statetments - If, Break, Next
+
+<style>
+pre {
+  margin-bottom: -10px;
+}
+</style>

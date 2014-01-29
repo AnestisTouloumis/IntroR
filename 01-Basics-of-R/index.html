@@ -47,14 +47,14 @@
   <article>
     <p>R is a versatile, open source programming/scripting language that&#39;s useful both for statistics and data science. </p>
 
-<ul>
+<ol>
 <li>Public domain software </li>
 <li>Superior (if not just comparable) to commercial alternatives</li>
 <li>Available on all platforms</li>
 <li>Not just for statistics, but also general purpose programming</li>
 <li>Is object oriented and functional</li>
 <li>Large and growing community of peers</li>
-</ul>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -67,12 +67,12 @@
   <article>
     <p>Within R studio, there are 4 parts to R</p>
 
-<ul>
+<ol>
 <li>Console: Where commands are run</li>
 <li>Scripts: Where commands are written</li>
 <li>Environments: Where objects are stored</li>
 <li>Plots: Where data is viewed</li>
-</ul>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -85,7 +85,7 @@
   <article>
     <p>The R console returns objects based on functions and expressions.</p>
 
-<p><img src="C:/Users/Jorge/Documents/IntroR/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 600px;"/> </p>
+<p>Always save commands in a SCRIPT!</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -101,6 +101,7 @@
 <h2><strong>Try It!</strong></h2>
 
 <ol>
+<li><p>Compute 7.34 plus 3.15 plus 4.36</p></li>
 <li><p>What is 17 multiplied by 365?</p></li>
 <li><p>What is 7 cubed?</p></li>
 </ol>
@@ -114,10 +115,9 @@
     <h1>Creating Objects</h1>
   </hgroup>
   <article>
-    <p>All expressions can be saved as an object, this is the fundamental unit in R. To create an object from an expression we use the assignment operater &lt;-</p>
+    <p>All expressions can be saved as an object, this is the fundamental unit in R. To create an objects use:</p>
 
-<p><strong>Assignment operator</strong>
-<code>&lt;-</code> is the assignment operator. Assigns values on the right to objects on the left.</p>
+<p><code>&lt;-</code> called, &#39;the assignment operator&#39;. This assigns values on the right to objects on the left.</p>
 
 <pre><code class="r">a &lt;- 12 * 180
 a
@@ -307,18 +307,21 @@ d[1]
     <h1>Functions</h1>
   </hgroup>
   <article>
-    <p>A function is a saved object that performs a task given inputs. All functions are made up of smaller objects. Functions are used in the format output&lt;-name_of_function(inputs)</p>
+    <p>A function is a saved object that performs a task given inputs. Like excel, functions take in information and return desired outputs. Functions are used in the format:</p>
+
+<p>output&lt;-name_of_function(inputs)</p>
 
 <pre><code class="r"># The sum of a vector
-sum(c(3, 4, 5))
+a &lt;- c(3, 4, 5)
+b &lt;- sum(a)
+b
 </code></pre>
 
 <pre><code>## [1] 12
 </code></pre>
 
-<pre><code class="r">
-# The mean of a vector
-mean(c(3, 4, 5))
+<pre><code class="r"># The mean of a vector
+mean(a)
 </code></pre>
 
 <pre><code>## [1] 4
@@ -330,32 +333,16 @@ mean(c(3, 4, 5))
 
       <slide class="" id="slide-15" style="background:;">
   <hgroup>
-    <h1>Functions can act on objects </h1>
+    <h1>How to use a function?</h1>
   </hgroup>
   <article>
-    <pre><code class="r">a &lt;- c(3, 4, 5)
-mean(a)
-</code></pre>
-
-<pre><code>## [1] 4
-</code></pre>
+    <p>All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and usually sample examples at the very bottom.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
       <slide class="" id="slide-16" style="background:;">
-  <hgroup>
-    <h1>How to use a function?</h1>
-  </hgroup>
-  <article>
-    <p>All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and ususally sample examples at the very bottom.</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h1><em>R tips</em></h1>
   </hgroup>
@@ -366,7 +353,7 @@ mean(a)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-18" style="background:;">
+      <slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2><strong>Try It!</strong></h2>
   </hgroup>
@@ -381,6 +368,30 @@ mean(a)
   <!-- Presenter Notes -->
 </slide>
 
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h1>Arguments</h1>
+  </hgroup>
+  <article>
+    <p>Arguments tell the function how to work! Functions are very flexible.</p>
+
+<pre><code class="r">a &lt;- c(1, 10, NA, 8)
+range(a)
+</code></pre>
+
+<pre><code>## [1] NA NA
+</code></pre>
+
+<pre><code class="r">range(a, na.rm = TRUE)
+</code></pre>
+
+<pre><code>## [1]  1 10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
       <slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h1>Packages</h1>
@@ -388,7 +399,7 @@ mean(a)
   <article>
     <p>We will be exploring functions in much greater detail throughout this course. Functions are the soul of R, that is why we use it. Functions are kept inside packages, some of which come preinstalled into R - others must be downloaded online</p>
 
-<p>To check out the wide world of packages: INSERT LINK and search with your favorite keyword! Ecology, paleo, dispersal, population modeling, economics!</p>
+<p>To check out the <a href="http://cran.r-project.org/web/packages/available_packages_by_date.html">wide world of packages:</a> and search with your favorite keyword! Ecology, paleo, dispersal, population modeling, economics!</p>
 
 <p>Often you will be asked to install a package to access a certain library of functions</p>
 
@@ -418,8 +429,7 @@ mean(a)
   </hgroup>
   <article>
     <ol>
-<li><p>Find a fascinating package in the search query. What is it? What is one interesting function?</p></li>
-<li><p>Install the package to your computer. </p></li>
+<li>Install ggplot2 to your computer, add dependecies = TRUE as an argument!</li>
 </ol>
 
   </article>
@@ -428,28 +438,7 @@ mean(a)
 
       <slide class="" id="slide-22" style="background:;">
   <hgroup>
-    <h1>You are not alone Part I - The R Help Screen and User Community</h1>
-  </hgroup>
-  <article>
-    <pre><code class="r">## ss 1.1.3: Online Help
-`?`(mean  # Equivalent to help(mean) 
-)
-
-`?`(sort  # Try, also, apropos (&#39;sor&#39;) 
-)
-# List all functions where &#39;sort&#39; is part of the name
-`?`(`?`(sort  # Note that the argument is &#39;sort&#39; 
-))
-# List functions with &#39;sort&#39; in the help page title or as an alias
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-23" style="background:;">
-  <hgroup>
-    <h1>You are not alone Part II - The R Help Screen and User Community</h1>
+    <h1>You are not alone Part - The R Help Screen and User Community</h1>
   </hgroup>
   <article>
     <p><img src="http://img78.imageshack.us/img78/196/wheelsel6.gif" alt="alt text"></p>
@@ -458,36 +447,25 @@ mean(a)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-24" style="background:;">
-  <hgroup>
-    <h1><strong>Quitting R</strong></h1>
-  </hgroup>
-  <article>
-    <p>type in <code>quit()</code> or <code>q()</code> and answer <code>Y</code> to quit. Always remember to save scripts. For now we will not save workspaces!</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-25" style="background:;">
+      <slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>Quick Review</h2>
   </hgroup>
   <article>
-    <ul>
-<li>1. Find the product of 17 multiplied by .75</li>
-<li>2. Save this product to an object x</li>
-<li>3. Find the product of 17 multiplied by .05, save as object y</li>
-<li>4. Create a vector of x x y y x</li>
-<li>5. How would you call the third position in this vector?</li>
-<li><ol>
-<li>The function seq will be used repeatedly throughout this course</li>
+    <ol>
+<li>Find the product of 17 multiplied by .75</li>
+<li>Save this product to an object x</li>
+<li>Find the product of 17 multiplied by .05, save as object y</li>
+<li>Create a vector of x x y y x</li>
+<li>How would you call the third position in this vector?</li>
+<li>The function seq will be used repeatedly throughout this course. Look at the help screen for seq, what does it do?</li>
 </ol>
 
-<p>a. Look at the help screen for seq, what does it do?</p></li>
-</ul>
-
 <hr>
+
+<h1><strong>Quitting R</strong></h1>
+
+<p>type in <code>quit()</code> or <code>q()</code> and answer <code>Y</code> to quit. Always remember to save scripts. For now we will not save workspaces!</p>
 
 <style>
 pre {

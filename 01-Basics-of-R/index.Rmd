@@ -15,12 +15,12 @@ mode        : selfcontained # {standalone, draft}
 
 R is a versatile, open source programming/scripting language that's useful both for statistics and data science. 
 
-* Public domain software 
-* Superior (if not just comparable) to commercial alternatives
-* Available on all platforms
-* Not just for statistics, but also general purpose programming
-* Is object oriented and functional
-* Large and growing community of peers
+1. Public domain software 
+2. Superior (if not just comparable) to commercial alternatives
+3. Available on all platforms
+4. Not just for statistics, but also general purpose programming
+5. Is object oriented and functional
+6. Large and growing community of peers
 
 ---
 **How to run `R`**  
@@ -28,10 +28,10 @@ R is a versatile, open source programming/scripting language that's useful both 
 
 Within R studio, there are 4 parts to R
 
-* Console: Where commands are run
-* Scripts: Where commands are written
-* Environments: Where objects are stored
-* Plots: Where data is viewed
+1. Console: Where commands are run
+2. Scripts: Where commands are written
+3. Environments: Where objects are stored
+4. Plots: Where data is viewed
 
 ---
 Running Commands in the Console
@@ -39,7 +39,7 @@ Running Commands in the Console
 
 The R console returns objects based on functions and expressions.
 
-<img src="C:/Users/Jorge/Documents/IntroR/01-Basics-of-R/capture.JPG" alt="Drawing" style="width: 600px;"/> 
+Always save commands in a SCRIPT!
 
 ---
 
@@ -48,19 +48,19 @@ The R console returns objects based on functions and expressions.
 **Try It!**
 -----------
 
-1. What is 17 multiplied by 365?
+1. Compute 7.34 plus 3.15 plus 4.36
 
-2. What is 7 cubed?
+2. What is 17 multiplied by 365?
+
+3. What is 7 cubed?
 
 ---
 Creating Objects
 ================
 
-All expressions can be saved as an object, this is the fundamental unit in R. To create an object from an expression we use the assignment operater <-
+All expressions can be saved as an object, this is the fundamental unit in R. To create an objects use:
 
-
-**Assignment operator**
-`<- ` is the assignment operator. Assigns values on the right to objects on the left.
+`<- ` called, 'the assignment operator'. This assigns values on the right to objects on the left.
 
 
 ```{r}
@@ -175,22 +175,16 @@ d[2]
 Functions
 =========
 
-A function is a saved object that performs a task given inputs. All functions are made up of smaller objects. Functions are used in the format output<-name_of_function(inputs)
+A function is a saved object that performs a task given inputs. Like excel, functions take in information and return desired outputs. Functions are used in the format:
+
+output<-name_of_function(inputs)
 
 ```{r}
 #The sum of a vector
-sum(c(3,4,5))
-
-#The mean of a vector
-mean(c(3,4,5))
-```
-
----
-
-Functions can act on objects 
-=================
-```{r}
 a<-c(3,4,5)
+b<-sum(a)
+b
+#The mean of a vector
 mean(a)
 ```
 
@@ -199,10 +193,9 @@ mean(a)
 How to use a function?
 =====================
 
-All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and ususally sample examples at the very bottom.
+All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and usually sample examples at the very bottom.
 
 ---
-
 *R tips*
 =======
 
@@ -219,12 +212,26 @@ While many R functions are easy to guess their name, most functions are abbrevia
 
 ---
 
+Arguments
+=========
+
+Arguments tell the function how to work! Functions are very flexible.
+
+```{r}
+a<-c(1,10,NA,8)
+range(a)
+range(a,na.rm=TRUE)
+```
+
+---
+
 Packages
 ===========
 
 We will be exploring functions in much greater detail throughout this course. Functions are the soul of R, that is why we use it. Functions are kept inside packages, some of which come preinstalled into R - others must be downloaded online
 
-To check out the wide world of packages: INSERT LINK and search with your favorite keyword! Ecology, paleo, dispersal, population modeling, economics!
+To check out the [wide world of packages:]( 
+http://cran.r-project.org/web/packages/available_packages_by_date.html) and search with your favorite keyword! Ecology, paleo, dispersal, population modeling, economics!
 
 Often you will be asked to install a package to access a certain library of functions
 
@@ -248,51 +255,33 @@ Installing a package just download its to your computer. To actually use a funct
 **Try It!** 
 ------------
 
-9. Find a fascinating package in the search query. What is it? What is one interesting function?
-
-10. Install the package to your computer. 
+9. Install ggplot2 to your computer, add dependecies = TRUE as an argument!
 
 ---
 
-You are not alone Part I - The R Help Screen and User Community
-=====================
-```{r}
-## ss 1.1.3: Online Help 
-?mean                # Equivalent to help(mean) 
-
-?sort      # Try, also, apropos ("sor") 
- # List all functions where "sort" is part of the name  
-??sort   # Note that the argument is 'sort' 
- # List functions with 'sort' in the help page title or as an alias 
-```
-
----
-
-You are not alone Part II - The R Help Screen and User Community
+You are not alone Part - The R Help Screen and User Community
 ====================
 ![alt text](http://img78.imageshack.us/img78/196/wheelsel6.gif)
 
----
-
-**Quitting R**
-==========
-
-type in `quit()` or `q()` and answer `Y` to quit. Always remember to save scripts. For now we will not save workspaces!
 
 ---&twocol
 
 Quick Review
 ------
-- 1. Find the product of 17 multiplied by .75
-- 2. Save this product to an object x
-- 3. Find the product of 17 multiplied by .05, save as object y
-- 4. Create a vector of x x y y x
-- 5. How would you call the third position in this vector?
-- 6. The function seq will be used repeatedly throughout this course
-
-  a. Look at the help screen for seq, what does it do?
+1. Find the product of 17 multiplied by .75
+2. Save this product to an object x
+3. Find the product of 17 multiplied by .05, save as object y
+4. Create a vector of x x y y x
+5. How would you call the third position in this vector?
+6. The function seq will be used repeatedly throughout this course. Look at the help screen for seq, what does it do?
   
 ---
+
+
+**Quitting R**
+==========
+
+type in `quit()` or `q()` and answer `Y` to quit. Always remember to save scripts. For now we will not save workspaces!
 <style>
 pre {
   margin-bottom: -10px;

@@ -3,9 +3,9 @@ title       : Data
 subtitle    : Import, exploration, and plotting
 author      : Ben Weinstein
 job         : 
-framework   : landslide        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : prettify  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : IR_BLACK      # 
 widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -33,15 +33,18 @@ traits <- read.csv("C:/Users/Ben/Documents/GitHub/IntroR/05-DataExploration/Trai
     row.names = 1)
 ```
 
-```
-## Error: cannot open the connection
-```
-
 ---
-
-```
-Error: object 'traits' not found
-```
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Sat Jan 25 14:33:22 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Clade </TH> <TH> Genus </TH> <TH> Species </TH> <TH> double </TH> <TH> English </TH> <TH> Bill </TH> <TH> Mass </TH> <TH> WingChord </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> Coquettes </TD> <TD> Adelomyia </TD> <TD> melanogenys </TD> <TD> Adelomyia melanogenys </TD> <TD> Speckled Hummingbird </TD> <TD align="right"> 15.04 </TD> <TD align="right"> 4.25 </TD> <TD align="right"> 55.87 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> Brilliant </TD> <TD> Aglaeactis </TD> <TD> cupripennis </TD> <TD> Aglaeactis cupripennis </TD> <TD> Shining Sunbeam </TD> <TD align="right"> 18.71 </TD> <TD align="right"> 8.44 </TD> <TD align="right"> 85.62 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> Coquettes </TD> <TD> Aglaiocercus </TD> <TD> coelestis </TD> <TD> Aglaiocercus coelestis </TD> <TD> Violet-tailed Sylph </TD> <TD align="right"> 16.25 </TD> <TD align="right"> 6.07 </TD> <TD align="right"> 68.68 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> Coquettes </TD> <TD> Aglaiocercus </TD> <TD> kingi </TD> <TD> Aglaiocercus kingi </TD> <TD> Long-tailed Sylph </TD> <TD align="right"> 15.77 </TD> <TD align="right"> 5.53 </TD> <TD align="right"> 67.12 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> Emerald </TD> <TD> Amazilia </TD> <TD> amazilia </TD> <TD> Amazilia amazilia </TD> <TD> Amazilia Hummingbird </TD> <TD align="right"> 18.54 </TD> <TD align="right"> 4.07 </TD> <TD align="right"> 53.33 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> Emerald </TD> <TD> Amazilia </TD> <TD> castaneiventris </TD> <TD> Amazilia castaneiventris </TD> <TD> Chestnut-bellied Hummingbird </TD> <TD align="right"> 18.70 </TD> <TD align="right"> 4.75 </TD> <TD align="right"> 52.70 </TD> </TR>
+   </TABLE>
 
 
 ---
@@ -58,7 +61,11 @@ table(traits$Clade)
 ```
 
 ```
-## Error: object 'traits' not found
+## 
+##       Bee Brilliant Coquettes   Emerald    Hermit    Mangoe     MtGem 
+##         5        37        27        34        22        13         1 
+##  Patagona   Topazes 
+##         1         1
 ```
 
 ```r
@@ -66,7 +73,7 @@ mean(traits$Bill)
 ```
 
 ```
-## Error: object 'traits' not found
+## [1] 21.41
 ```
 
 
@@ -101,9 +108,7 @@ library(ggplot2)
 ggplot(traits, aes(x = WingChord, y = Mass)) + geom_point()
 ```
 
-```
-## Error: object 'traits' not found
-```
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
 
 *** right
@@ -117,9 +122,7 @@ For now, we will always be setting global aesthestics inside the *ggplot()* and 
 ggplot(traits, aes(x = Clade, y = Mass)) + geom_point()
 ```
 
-```
-## Error: object 'traits' not found
-```
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
 
 ```r
 # What if we want something besides points
@@ -133,9 +136,7 @@ There are many geom styles type **geom_** and hit tab to see types, and then get
 ggplot(traits, aes(x = Clade, y = Mass)) + geom_boxplot()
 ```
 
-```
-## Error: object 'traits' not found
-```
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
 
 
 ---&twocol
@@ -151,19 +152,10 @@ Building more complex plots
 
 ```r
 p <- ggplot(traits, aes(x = Mass, y = WingChord, color = Bill))
-```
-
-```
-## Error: object 'traits' not found
-```
-
-```r
 p + geom_point()
 ```
 
-```
-## Error: object 'p' not found
-```
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
 
 
 ---&twocol
@@ -182,9 +174,7 @@ ggplot(traits, aes(x = Mass, y = WingChord, color = Bill, shape = Clade)) +
     geom_point()
 ```
 
-```
-## Error: object 'traits' not found
-```
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
 
 
 -ggplot is very smart. Trust it.
@@ -196,9 +186,7 @@ Shapes and sizes can be added as well, note how ggplot automatically groups by b
 ggplot(traits, aes(x = Bill, y = WingChord, color = Clade, size = Mass)) + geom_point()
 ```
 
-```
-## Error: object 'traits' not found
-```
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
 
 ggplot is very smart. Trust it.
 
@@ -223,9 +211,7 @@ Often we want to express more information than a single geometric object, ggplot
 ggplot(traits, aes(x = Mass, y = Bill)) + geom_point() + geom_smooth()
 ```
 
-```
-## Error: object 'traits' not found
-```
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
 
 
 ---
@@ -243,10 +229,6 @@ Given a bit smaller dataset, we can explore more options, add both color and sha
 coq <- droplevels(traits[traits$Clade == "Coquettes", ])
 ```
 
-```
-## Error: object 'traits' not found
-```
-
 
 ---
 Text can be added, and manipulated directly
@@ -257,9 +239,7 @@ ggplot(coq, aes(x = Bill, y = WingChord, size = Mass, label = Genus)) + geom_poi
     geom_text(size = 3)
 ```
 
-```
-## Error: object 'coq' not found
-```
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
 
 
 ---
@@ -271,9 +251,7 @@ ggplot(coq, aes(x = Species, y = WingChord, col = Bill, size = Mass)) + geom_poi
     scale_color_continuous(low = "blue", high = "red") + ylab("Wing Length")
 ```
 
-```
-## Error: object 'coq' not found
-```
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
 
 **Parsed**: Plot the dataframe coq, with Species on the x axis, with WingChord on the y axis, color the data by Bill size, and adjust the size of the data based on Mass. Add points. Create a panel for each Genus, make the x axis different for each panel. Rotate the x axis labels by 90degrees. Change the color of the Bill size from blue to red. Label the y axis "Wing length"
 
@@ -297,8 +275,9 @@ If we want to export the data that we created, we can save it to file as a csv
 write.csv(coq, "Coquettes.csv")
 ```
 
-```
-## Error: object 'coq' not found
-```
 
-
+<style>
+pre {
+  margin-bottom: -10px;
+}
+</style>

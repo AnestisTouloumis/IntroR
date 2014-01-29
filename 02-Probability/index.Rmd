@@ -5,7 +5,7 @@ author      : Ben Weinstein
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : IR_BlACK      # 
 widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -134,13 +134,13 @@ plot(x, dnorm(dens, 2, 0.5), type = "l")
 > One nice option is to plot the distribution not in terms of raw counts, but in terms of density, so the histogram sums to 1
 
 *** left
-```{r}
+```{r,fig.height=4,fig.width=4}
 x<-rnorm(100,mean=0,sd=2)
 hist(x)
 ```
 
 *** right
-```{r}
+```{r,fig.height=4,fig.width=4}
 hist(x,freq=FALSE)
 ```
 
@@ -178,3 +178,9 @@ What did we learn today?
 > 1. Drawing from random normal distributions *rnorm()*
 > 2. Histograms and Density Plots
 > 3. The sample() function
+
+<style>
+pre {
+  margin-bottom: -10px;
+}
+</style>

@@ -5,7 +5,7 @@ author      : Ben Weinstein
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : IR_BLACK      # 
 widgets     : [quiz]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -28,7 +28,7 @@ sample(x, 5)
 ```
 
 ```
-## [1]  8.608  5.111  8.002 11.465 19.875
+## [1] -7.491 15.922 16.360  7.854 14.139
 ```
 
 
@@ -60,7 +60,7 @@ head(iris)
 ============
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:11:54 2014 -->
+<!-- Sat Jan 25 14:28:27 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
@@ -100,7 +100,7 @@ R has many powerful subset operators and mastering them will allow you to easily
 
 **head(iris)**
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:11:55 2014 -->
+<!-- Sat Jan 25 14:28:27 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
@@ -176,7 +176,7 @@ Dataframes can be indexed for both rows and columns
 Get all rows and the first two columns
 **a<-iris[,1:2]**
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:11:55 2014 -->
+<!-- Sat Jan 25 14:28:27 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> </TR>
@@ -228,7 +228,7 @@ a <- iris[logi, ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:11:55 2014 -->
+<!-- Sat Jan 25 14:28:28 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -301,7 +301,7 @@ Only4 <- iris[iris$Petal.Length == 4, ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:11:55 2014 -->
+<!-- Sat Jan 25 14:28:28 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 54 </TD> <TD align="right"> 5.50 </TD> <TD align="right"> 2.30 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
@@ -323,7 +323,7 @@ Vers_Only <- iris[iris$Species == "versicolor", ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:11:56 2014 -->
+<!-- Sat Jan 25 14:28:28 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -349,7 +349,7 @@ subsetX <- iris[iris$Petal.Length > 4 & iris$Species == "versicolor", ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Jan 17 10:11:56 2014 -->
+<!-- Sat Jan 25 14:28:28 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -397,7 +397,13 @@ Today we covered basic data manipulation of dataframes in R
 Next Time
 ==========
 
-- For loops
-- Outputing loops to an object
-- Indexing Lists
-- Flow Statetments - If, Break, Next
+1. For loops
+2. Outputing loops to an object
+3. Indexing Lists
+4. Flow Statetments - If, Break, Next
+
+<style>
+pre {
+  margin-bottom: -10px;
+}
+</style>

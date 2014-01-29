@@ -5,7 +5,7 @@ author      : Ben Weinstein
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : IR_BlACK      # 
 widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -40,7 +40,7 @@ head(norm)
 ```
 
 ```
-## [1] 1.7937 0.6416 0.6053 0.7253 0.7048 0.3575
+## [1]  0.8013 -0.1754 -0.3681 -0.0395 -1.5400 -1.0176
 ```
 
 
@@ -186,8 +186,7 @@ sample(x, 20)
 ```
 
 ```
-##  [1]  38   5 100  70  31  75  37  25  65  98  21  14  77  72   4  76  62
-## [18]  22  33  50
+##  [1] 68 30 86  3 53 77 15 35 22  4 91 87 65 64 79 34  9 23 67 11
 ```
 
 
@@ -200,8 +199,7 @@ sample(x, 20, replace = TRUE)
 ```
 
 ```
-##  [1]   2  35  95  44  38  56  76  31  77   9  77  44 100  90  62  26  62
-## [18]  24  70  61
+##  [1]  8 12 91 37 62 60 85 67 13 37 79 47 27  3  6 13 85  8 61 30
 ```
 
 
@@ -214,3 +212,9 @@ What did we learn today?
 > 1. Drawing from random normal distributions *rnorm()*
 > 2. Histograms and Density Plots
 > 3. The sample() function
+
+<style>
+pre {
+  margin-bottom: -10px;
+}
+</style>
