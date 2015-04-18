@@ -21,6 +21,16 @@ hist(x)
 sample(x,5)
 ```
 
+---
+Snow days!
+=========
+1. Create a vector of sequences 0 to 214, by increments of 4
+2. What is the 17th position?
+3. How do you get the 3rd and 5th position?
+
+4. Draw 100 random normal values, plot them as a histogram
+5. Create a density plot of -4 to 4, by .1 for a possion. use the plot function to create an x and y scatter plot, type="l".
+
 --- &twocol
 
 Beyond Vectors - Beginning with Data frames
@@ -118,10 +128,11 @@ SL2<-iris[,1]
 
 Dataframes can be indexed for both rows and columns
 =================================================
-Get all rows and the first two columns
-**a<-iris[,1:2]**
+Get the 5th and 7th rows and the first two columns
+
+**a<-iris[c(5,7),1:2]**
 ```{r, results = 'asis', comment = NA,echo=FALSE}
-a<-iris[,1:2]
+a<-iris[c(5,7),1:2]
 options(xtable.type = 'html')
 xtable(head(a))
 ```
@@ -131,8 +142,8 @@ xtable(head(a))
 ------------
 5. What is the 9th entry of the Sepal.Width column? Call it x.
 6. How would you get all entries of iris for the 17th row?
-7. Return an object with the 1 4 and 7 rows of the iris dataframe?
-8. Use the seq command to get all odd rows in the iris dataset?
+7. Return an object with the 1st, 4th and 7th rows of the iris dataframe?
+8. Use the seq function to get all odd rows in the iris dataset?
 9. What happens when you use negative numbers? *Hint* Use *dim()* on the original and final objects. 
 
 ---
@@ -167,20 +178,13 @@ xtable(head(a))
 ---
 More Subsets
 ====
-
-```{r}
-#Return all columns based on iris$Petal.Width  values are greater than 1?
-a<-iris[iris$Petal.Width > 1,]
-```
-
-```{r}
-a<-iris[,1:2]
-#Return the same column as was subsetted.
-head(x[logi])
-```
-
 Return a different column based on the subset
+
 ```{r}
+#Which values are greater than 1?
+x<-iris$Petal.Width
+logi<-x > 1
+
 #Return all values in Sepal.Length where Sepal.Width is greater than 1. 
 head(iris[logi,"Petal.Length"])
 ```

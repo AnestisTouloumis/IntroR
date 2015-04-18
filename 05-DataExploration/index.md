@@ -35,7 +35,7 @@ traits <- read.csv("C:/Users/Ben/Documents/GitHub/IntroR/05-DataExploration/Trai
 
 ---
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:33:22 2014 -->
+<!-- Mon Feb 17 14:02:47 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Clade </TH> <TH> Genus </TH> <TH> Species </TH> <TH> double </TH> <TH> English </TH> <TH> Bill </TH> <TH> Mass </TH> <TH> WingChord </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> Coquettes </TD> <TD> Adelomyia </TD> <TD> melanogenys </TD> <TD> Adelomyia melanogenys </TD> <TD> Speckled Hummingbird </TD> <TD align="right"> 15.04 </TD> <TD align="right"> 4.25 </TD> <TD align="right"> 55.87 </TD> </TR>
@@ -101,8 +101,8 @@ library(ggplot2)
 
 ---&twocol
 
-*** left
 
+*** left
 
 ```r
 ggplot(traits, aes(x = WingChord, y = Mass)) + geom_point()
@@ -278,6 +278,6 @@ write.csv(coq, "Coquettes.csv")
 
 <style>
 pre {
-  margin-bottom: -10px;
+  margin-bottom: -12px;
 }
 </style>

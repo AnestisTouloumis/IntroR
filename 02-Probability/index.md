@@ -10,19 +10,26 @@ widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
+
+
+
 What did we learn last time?
 ===========================
 > 1. The Basic Components of R and Rstudio
 > 2. Vectors and Basic Math
 > 3. How to access the help screen
+> 4. Review Requests - Syntax, vector indexing, and using colons.
 
 ---
+
 Review
 =======
 
+When do we use parenthesis? Brackets? Commas?
+
 What is the sum of (1 through 10 multiplied by two) plus (1 through 20 divided by three). 
 
-*Bonus*: What is the mean number of 1 through 10 and 1 through 20 when taken together.
+What is the 12th position of seq(1,27,.5)?
 
 ---
 
@@ -40,7 +47,7 @@ head(norm)
 ```
 
 ```
-## [1]  0.8013 -0.1754 -0.3681 -0.0395 -1.5400 -1.0176
+[1]  0.5302 -0.3224 -0.1483 -1.0927 -0.5324  1.1063
 ```
 
 
@@ -61,7 +68,6 @@ Generating random samples from other distributions
 
 R has many distributions in the base package, including all commonly used in biological analysis. Depending on the distribution, each function has its own set of parameter arguments. For example, the *'rpois()'* function is the random number generator for the Poisson distribution and it has only the parameter argument lambda. The *rbinom()* function is the random number generator for the binomial distribution and it takes two arguments: size and prob. The size argument specifies the number of Bernoulli trials and the prob argument specifies the probability of a success for each trial. Heather will pick up from here.
 
-For now, its sufficient to know that a possion distribution is commonly used for count data, and has only paramater lambda, which is both the expected mean and var
 
 ---
 
@@ -77,7 +83,10 @@ Other distribution functions
 --------------------------------------------
 > For each of the distributions there are **four functions** which will generate fundamental quantities of a distribution. Let's consider the normal distribution as an example. We have already given examples of the **rnorm()** function which will generate a random sample from a specific normal distribution. 
 
-> The **dnorm()** function will generate the density (or point) probability for a specific value for a normal distribution. This function is very useful for creating a plot of a density function of a distribution. In the list of the random number generator functions all the functions started with an "r", similarly the density functions for all the distributions all start with a "d". 
+> The **dnorm()** function will generate the density (or point) probability for a specific value for a normal distribution. This function is very useful for creating a plot of a density function of a distribution. 
+
+> Random number generator start with an "r" + name of distribution 
+> Density functions start with d + name of distribution
 
 > The other two functions **pnorm()**, and **qnorm()** will be covered during Biometry. But it is sufficient to know they give the probability and quantile distributions. They are less commonly used.
 
@@ -104,7 +113,7 @@ pts <- rnorm(1000)
 hist(pts)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 
 Histograms are an effective way of visualizing distributions
@@ -128,10 +137,10 @@ Density plots
 ```r
 x <- seq(0, 4, 0.01)
 dens <- dnorm(x, 2, 0.5)
-plot(x, dnorm(dens, 2, 0.5), type = "l")
+plot(x, dens, type = "l")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
 
 ---
@@ -139,7 +148,8 @@ plot(x, dnorm(dens, 2, 0.5), type = "l")
 **Try It!**
 ------------
 
-16. Plot your density function. Label your axis, "This is the x axis", "This is the y axis"
+15. Draw 1000 random normals with a mean of 0 and a sd of 1.
+16. Plot your density function from -4 to 4. Label your axis, "This is the x axis", "This is the y axis" by looking at the plot help screen. 
 17. Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?
 
 ---&twocol
@@ -154,7 +164,7 @@ x <- rnorm(100, mean = 0, sd = 2)
 hist(x)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
 
 *** right
@@ -163,7 +173,7 @@ hist(x)
 hist(x, freq = FALSE)
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
 
 
 ---
@@ -186,7 +196,8 @@ sample(x, 20)
 ```
 
 ```
-##  [1] 68 30 86  3 53 77 15 35 22  4 91 87 65 64 79 34  9 23 67 11
+ [1]  33   5 100  95  90  29  92  23  75  61  10  76  84   6  55  81  22
+[18]  94  28  21
 ```
 
 
@@ -199,11 +210,21 @@ sample(x, 20, replace = TRUE)
 ```
 
 ```
-##  [1]  8 12 91 37 62 60 85 67 13 37 79 47 27  3  6 13 85  8 61 30
+ [1]  9 72 67 65 14 80 63 73 13 68 13 96 23 50 55 60 57 73 50 63
 ```
 
 
 ---
+
+**Try It!**
+------------
+
+16. Sample 14 integers from 100 to 200 without replacement
+17. Sample 5 letters (using the pre-installed vector 'letters') from the alphabet without replacement
+18. Sample 0 or 1 12 times, with and without replacement. What happens?
+
+---
+
 
 What did we learn today?
 ---------------------

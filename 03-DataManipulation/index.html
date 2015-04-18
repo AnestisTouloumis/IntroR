@@ -58,7 +58,7 @@ hist(x)
 sample(x, 5)
 </code></pre>
 
-<pre><code>## [1] -7.491 15.922 16.360  7.854 14.139
+<pre><code>## [1] 5.110 9.974 7.118 2.490 7.598
 </code></pre>
 
   </article>
@@ -66,6 +66,23 @@ sample(x, 5)
 </slide>
 
       <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h1>Snow days!</h1>
+  </hgroup>
+  <article>
+    <ol>
+<li>Create a vector of sequences 0 to 214, by increments of 4</li>
+<li>What is the 17th position?</li>
+<li><p>How do you get the 3rd and 5th position?</p></li>
+<li><p>Draw 100 random normal values, plot them as a histogram</p></li>
+<li><p>Create a density plot of -4 to 4, by .1 for a possion. use the plot function to create an x and y scatter plot, type=&quot;l&quot;.</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h1>Beyond Vectors - Beginning with Data frames</h1>
   </hgroup>
@@ -96,7 +113,7 @@ sample(x, 5)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-3" style="background:;">
+      <slide class="" id="slide-4" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -107,7 +124,7 @@ sample(x, 5)
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Jan 25 14:28:27 2014 -->
+<!-- Mon Feb 10 13:44:40 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
@@ -123,7 +140,7 @@ sample(x, 5)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-4" style="background:;">
+      <slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2><strong>Try It!</strong></h2>
   </hgroup>
@@ -157,7 +174,7 @@ sample(x, 5)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-5" style="background:;">
+      <slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Dataframe syntax and subsetting</h2>
   </hgroup>
@@ -168,7 +185,7 @@ sample(x, 5)
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Jan 25 14:28:27 2014 -->
+<!-- Mon Feb 10 13:44:40 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
@@ -184,7 +201,7 @@ sample(x, 5)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-6" style="background:;">
+      <slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Dataframes syntax</h2>
   </hgroup>
@@ -210,7 +227,7 @@ head(y)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-7" style="background:;">
+      <slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>Indexing</h2>
   </hgroup>
@@ -239,26 +256,23 @@ head(SL)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-8" style="background:;">
+      <slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h1>Dataframes can be indexed for both rows and columns</h1>
   </hgroup>
   <article>
-    <p>Get all rows and the first two columns
-<strong>a&lt;-iris[,1:2]</strong></p>
+    <p>Get the 5th and 7th rows and the first two columns</p>
+
+<p><strong>a&lt;-iris[c(5,7),1:2]</strong></p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Jan 25 14:28:27 2014 -->
+<!-- Mon Feb 10 13:44:40 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 3.00 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 3.20 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 3.10 </TD> </TR>
   <TR> <TD align="right"> 5 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 3.60 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD align="right"> 5.40 </TD> <TD align="right"> 3.90 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 3.40 </TD> </TR>
    </TABLE>
 
 <div style='float:left;width:48%;' class='centered'>
@@ -271,7 +285,7 @@ head(SL)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-9" style="background:;">
+      <slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2><strong>Try It!</strong></h2>
   </hgroup>
@@ -279,8 +293,8 @@ head(SL)
     <ol>
 <li>What is the 9th entry of the Sepal.Width column? Call it x.</li>
 <li>How would you get all entries of iris for the 17th row?</li>
-<li>Return an object with the 1 4 and 7 rows of the iris dataframe?</li>
-<li>Use the seq command to get all odd rows in the iris dataset?</li>
+<li>Return an object with the 1st, 4th and 7th rows of the iris dataframe?</li>
+<li>Use the seq function to get all odd rows in the iris dataset?</li>
 <li>What happens when you use negative numbers? <em>Hint</em> Use <em>dim()</em> on the original and final objects. </li>
 </ol>
 
@@ -288,7 +302,7 @@ head(SL)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-10" style="background:;">
+      <slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>Using logical statements</h2>
   </hgroup>
@@ -307,7 +321,7 @@ hist(x)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-11" style="background:;">
+      <slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>Subset Using Statements</h2>
   </hgroup>
@@ -322,7 +336,7 @@ a &lt;- iris[logi, ]
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
@@ -338,26 +352,18 @@ a &lt;- iris[logi, ]
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-12" style="background:;">
+      <slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h1>More Subsets</h1>
   </hgroup>
   <article>
-    <pre><code class="r"># Return all columns based on iris$Petal.Width values are greater than 1?
-a &lt;- iris[iris$Petal.Width &gt; 1, ]
-</code></pre>
+    <p>Return a different column based on the subset</p>
 
-<pre><code class="r">a &lt;- iris[, 1:2]
-# Return the same column as was subsetted.
-head(x[logi])
-</code></pre>
+<pre><code class="r"># Which values are greater than 1?
+x &lt;- iris$Petal.Width
+logi &lt;- x &gt; 1
 
-<pre><code>## [1] 1.4 1.5 1.5 1.3 1.5 1.3
-</code></pre>
-
-<p>Return a different column based on the subset</p>
-
-<pre><code class="r"># Return all values in Sepal.Length where Sepal.Width is greater than 1.
+# Return all values in Sepal.Length where Sepal.Width is greater than 1.
 head(iris[logi, &quot;Petal.Length&quot;])
 </code></pre>
 
@@ -368,7 +374,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-13" style="background:;">
+      <slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2><strong>Try It!</strong></h2>
   </hgroup>
@@ -385,7 +391,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-14" style="background:;">
+      <slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>Other types of logical statements </h2>
   </hgroup>
@@ -399,7 +405,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
@@ -414,7 +420,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-15" style="background:;">
+      <slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h1>Get only records from the species versicolor</h1>
   </hgroup>
@@ -424,7 +430,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
@@ -440,7 +446,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-16" style="background:;">
+      <slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h1>Logical statments </h1>
   </hgroup>
@@ -452,7 +458,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
@@ -468,7 +474,7 @@ head(iris[logi, &quot;Petal.Length&quot;])
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-17" style="background:;">
+      <slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2><strong>Try It!</strong></h2>
   </hgroup>
@@ -489,7 +495,7 @@ iris[iris$Species == &quot;setosa&quot;,] with iris[!iris$Species == &quot;setos
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-18" style="background:;">
+      <slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>What did we learn today?</h2>
   </hgroup>
@@ -507,7 +513,7 @@ iris[iris$Species == &quot;setosa&quot;,] with iris[!iris$Species == &quot;setos
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-19" style="background:;">
+      <slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h1>Next Time</h1>
   </hgroup>

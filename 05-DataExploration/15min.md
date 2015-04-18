@@ -1,67 +1,18 @@
-15min Group Assignment - Answers
+10min Group Assignment - Answers
 =================
 Choose one of the following challenges.
 
-1. Plot the ranges of bill sizes using geom_linerange() for each clade. *Hint* to get a vector of clade names, use levels(traits$Clade)
-2. Create a new index of wing to mass ratios. Plot the index by species, colored by the clade, add a dotted line (geom_abline()) to show whether species fall above or below 1.
-3. Does the number of species in a genus relate to the variance in body size?
+1. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
 
-1.
 
 ```r
-# read in the data
-traits <- read.csv("C:/Users/Ben/Documents/GitHub/IntroR/05-DataExploration/Traits.csv", 
-    row.names = 1)
-
-# Get a list of all the clades
-clades <- levels(traits$Clade)
-clades
+traits <- read.csv("C:/Users/Ben/Desktop/Traits.csv")
+require(ggplot2)
 ```
 
 ```
-## [1] "Bee"       "Brilliant" "Coquettes" "Emerald"   "Hermit"    "Mangoe"   
-## [7] "MtGem"     "Patagona"  "Topazes"
+## Loading required package: ggplot2
 ```
-
-```r
-
-# Create a blank list to store outputs
-out <- data.frame()
-
-# For each clade, subset the trait matrix to get just members of that clade
-for (x in 1:length(clades)) {
-    cladetoSelect <- clades[x]
-    print(cladetoSelect)
-    cladeD <- traits[traits$Clade == cladetoSelect, ]
-    # Get the row of the species with the largest bill
-    rowL <- which.max(cladeD$Bill)
-    # Get the fow of species with the smallest bill
-    rowS <- which.min(cladeD$Bill)
-    # Subset the clade data to get those rows
-    out <- rbind(out, cladeD[c(rowL, rowS), ])
-}
-```
-
-```
-## [1] "Bee"
-## [1] "Brilliant"
-## [1] "Coquettes"
-## [1] "Emerald"
-## [1] "Hermit"
-## [1] "Mangoe"
-## [1] "MtGem"
-## [1] "Patagona"
-## [1] "Topazes"
-```
-
-```r
-
-# plot the results
-```
-
-
-2. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a linear smoothing line following the instructions in "stat_smooth()
-
 
 ```r
 # Create new column for the w/m ratio
@@ -71,17 +22,66 @@ ggplot(traits, aes(x = Mass, y = WingChord, col = Clade)) + geom_point() + geom_
     aes(group = 1)) + facet_wrap(~Clade)
 ```
 
-```
-## Error: could not find function "ggplot"
-```
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-11.png) 
 
 ```r
 ggplot(traits, aes(x = Species, y = w_m)) + geom_point() + geom_smooth(aes(group = 1), 
     method = "lm") + facet_wrap(~Clade, scales = "free")
 ```
 
-```
-## Error: could not find function "ggplot"
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-12.png) 
+
+
+2. Does the number of species in a genus relate to the variance in body size?
+
+
+```r
+# Find the number of species in a genus using a cotingency table
+sp_g <- data.frame(table(traits$Genus))
+
+# name the columns
+colnames(sp_g) <- c("Genus", "N")
+
+for (i in 1:nrow(sp_g)) {
+    genus <- sp_g[i, "Genus"]
+    # subset the data for that genus
+    genus_t <- traits[traits$Genus == genus, ]
+    # Get the variance in bill size and place it in an output
+    sp_g[i, "Var_bill"] <- var(genus_t$Bill)
+}
+
+# plot the result
+ggplot(sp_g, aes(x = N, y = Var_bill)) + geom_point() + geom_smooth()
 ```
 
+```
+## geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
+```
+
+```
+## Warning: Removed 29 rows containing missing values (stat_smooth).
+## Warning: pseudoinverse used at 1.935
+## Warning: neighborhood radius 3.065
+## Warning: reciprocal condition number  0
+## Warning: There are other near singularities as well. 9
+## Warning: pseudoinverse used at 1.935
+## Warning: neighborhood radius 3.065
+## Warning: reciprocal condition number  0
+## Warning: There are other near singularities as well. 9
+## Warning: Removed 29 rows containing missing values (geom_point).
+```
+
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-21.png) 
+
+```r
+ggplot(sp_g, aes(x = N, y = Var_bill)) + geom_point() + geom_smooth(method = "lm") + 
+    ylim(0, 12)
+```
+
+```
+## Warning: Removed 31 rows containing missing values (stat_smooth).
+## Warning: Removed 31 rows containing missing values (geom_point).
+```
+
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-22.png) 
 

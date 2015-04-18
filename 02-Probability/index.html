@@ -51,6 +51,7 @@
 <li>The Basic Components of R and Rstudio</li>
 <li>Vectors and Basic Math</li>
 <li>How to access the help screen</li>
+<li>Review Requests - Syntax, vector indexing, and using colons.</li>
 </ol>
 
   </article>
@@ -62,9 +63,11 @@
     <h1>Review</h1>
   </hgroup>
   <article>
-    <p>What is the sum of (1 through 10 multiplied by two) plus (1 through 20 divided by three). </p>
+    <p>When do we use parenthesis? Brackets? Commas?</p>
 
-<p><em>Bonus</em>: What is the mean number of 1 through 10 and 1 through 20 when taken together.</p>
+<p>What is the sum of (1 through 10 multiplied by two) plus (1 through 20 divided by three). </p>
+
+<p>What is the 12th position of seq(1,27,.5)?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -83,7 +86,7 @@
 head(norm)
 </code></pre>
 
-<pre><code>## [1]  0.8013 -0.1754 -0.3681 -0.0395 -1.5400 -1.0176
+<pre><code>[1]  0.5302 -0.3224 -0.1483 -1.0927 -0.5324  1.1063
 </code></pre>
 
   </article>
@@ -114,8 +117,6 @@ head(norm)
   <article>
     <p>R has many distributions in the base package, including all commonly used in biological analysis. Depending on the distribution, each function has its own set of parameter arguments. For example, the <em>&#39;rpois()&#39;</em> function is the random number generator for the Poisson distribution and it has only the parameter argument lambda. The <em>rbinom()</em> function is the random number generator for the binomial distribution and it takes two arguments: size and prob. The size argument specifies the number of Bernoulli trials and the prob argument specifies the probability of a success for each trial. Heather will pick up from here.</p>
 
-<p>For now, its sufficient to know that a possion distribution is commonly used for count data, and has only paramater lambda, which is both the expected mean and var</p>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -143,7 +144,10 @@ head(norm)
     <blockquote>
 <p>For each of the distributions there are <strong>four functions</strong> which will generate fundamental quantities of a distribution. Let&#39;s consider the normal distribution as an example. We have already given examples of the <strong>rnorm()</strong> function which will generate a random sample from a specific normal distribution. </p>
 
-<p>The <strong>dnorm()</strong> function will generate the density (or point) probability for a specific value for a normal distribution. This function is very useful for creating a plot of a density function of a distribution. In the list of the random number generator functions all the functions started with an &quot;r&quot;, similarly the density functions for all the distributions all start with a &quot;d&quot;. </p>
+<p>The <strong>dnorm()</strong> function will generate the density (or point) probability for a specific value for a normal distribution. This function is very useful for creating a plot of a density function of a distribution. </p>
+
+<p>Random number generator start with an &quot;r&quot; + name of distribution 
+Density functions start with d + name of distribution</p>
 
 <p>The other two functions <strong>pnorm()</strong>, and <strong>qnorm()</strong> will be covered during Biometry. But it is sufficient to know they give the probability and quantile distributions. They are less commonly used.</p>
 </blockquote>
@@ -179,7 +183,7 @@ pts &lt;- rnorm(1000)
 hist(pts)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+<p><img src="figure/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
 
 <h2>Histograms are an effective way of visualizing distributions</h2>
 
@@ -203,10 +207,10 @@ hist(pts)
   <article>
     <pre><code class="r">x &lt;- seq(0, 4, 0.01)
 dens &lt;- dnorm(x, 2, 0.5)
-plot(x, dnorm(dens, 2, 0.5), type = &quot;l&quot;)
+plot(x, dens, type = &quot;l&quot;)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -218,7 +222,8 @@ plot(x, dnorm(dens, 2, 0.5), type = &quot;l&quot;)
   </hgroup>
   <article>
     <ol>
-<li>Plot your density function. Label your axis, &quot;This is the x axis&quot;, &quot;This is the y axis&quot;</li>
+<li>Draw 1000 random normals with a mean of 0 and a sd of 1.</li>
+<li>Plot your density function from -4 to 4. Label your axis, &quot;This is the x axis&quot;, &quot;This is the y axis&quot; by looking at the plot help screen. </li>
 <li>Repeat the above seq, from 0 to 4, but make the interval .01, replot your figure, how is the plot changed?</li>
 </ol>
 
@@ -242,7 +247,7 @@ One nice option is to plot the distribution not in terms of raw counts, but in t
 hist(x)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
 
 
 </div>
@@ -250,7 +255,7 @@ hist(x)
   <pre><code class="r">hist(x, freq = FALSE)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
 
 </div>
   </article>
@@ -277,7 +282,8 @@ hist(x)
 sample(x, 20)
 </code></pre>
 
-<pre><code>##  [1] 68 30 86  3 53 77 15 35 22  4 91 87 65 64 79 34  9 23 67 11
+<pre><code> [1]  33   5 100  95  90  29  92  23  75  61  10  76  84   6  55  81  22
+[18]  94  28  21
 </code></pre>
 
 <h1>Sample with replacement</h1>
@@ -286,7 +292,7 @@ sample(x, 20)
 sample(x, 20, replace = TRUE)
 </code></pre>
 
-<pre><code>##  [1]  8 12 91 37 62 60 85 67 13 37 79 47 27  3  6 13 85  8 61 30
+<pre><code> [1]  9 72 67 65 14 80 63 73 13 68 13 96 23 50 55 60 57 73 50 63
 </code></pre>
 
   </article>
@@ -294,6 +300,21 @@ sample(x, 20, replace = TRUE)
 </slide>
 
       <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2><strong>Try It!</strong></h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Sample 14 integers from 100 to 200 without replacement</li>
+<li>Sample 5 letters (using the pre-installed vector &#39;letters&#39;) from the alphabet without replacement</li>
+<li>Sample 0 or 1 12 times, with and without replacement. What happens?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>What did we learn today?</h2>
   </hgroup>

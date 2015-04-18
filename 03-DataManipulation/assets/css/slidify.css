@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald);
+﻿@import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(http://fonts.googleapis.com/css?family=Signika+Negative);
 
 .license {
@@ -23,7 +23,7 @@
 article p, article li, article li.build{
   font-family: 'Helvetica', 'Crimson Text', 'Garamond',  'Palatino', sans-serif;
   text-align: justify;
-  font-size:27px;
+  font-size:29px;
   line-height: 1.5em;
 }
 
@@ -189,5 +189,5 @@ ol {
   list-style-type: decimal;
 }
 pre {
-  font-size: 28px;
+  font-size: 29px;
 }

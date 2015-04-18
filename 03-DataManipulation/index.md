@@ -28,9 +28,19 @@ sample(x, 5)
 ```
 
 ```
-## [1] -7.491 15.922 16.360  7.854 14.139
+## [1] 5.110 9.974 7.118 2.490 7.598
 ```
 
+
+---
+Snow days!
+=========
+1. Create a vector of sequences 0 to 214, by increments of 4
+2. What is the 17th position?
+3. How do you get the 3rd and 5th position?
+
+4. Draw 100 random normal values, plot them as a histogram
+5. Create a density plot of -4 to 4, by .1 for a possion. use the plot function to create an x and y scatter plot, type="l".
 
 --- &twocol
 
@@ -60,7 +70,7 @@ head(iris)
 ============
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:28:27 2014 -->
+<!-- Mon Feb 10 13:44:40 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
@@ -100,7 +110,7 @@ R has many powerful subset operators and mastering them will allow you to easily
 
 **head(iris)**
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:28:27 2014 -->
+<!-- Mon Feb 10 13:44:40 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> <TD align="right"> 1.40 </TD> <TD align="right"> 0.20 </TD> <TD> setosa </TD> </TR>
@@ -173,18 +183,15 @@ SL2 <- iris[, 1]
 
 Dataframes can be indexed for both rows and columns
 =================================================
-Get all rows and the first two columns
-**a<-iris[,1:2]**
+Get the 5th and 7th rows and the first two columns
+
+**a<-iris[c(5,7),1:2]**
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:28:27 2014 -->
+<!-- Mon Feb 10 13:44:40 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD align="right"> 5.10 </TD> <TD align="right"> 3.50 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD align="right"> 4.90 </TD> <TD align="right"> 3.00 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 3.20 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 3.10 </TD> </TR>
   <TR> <TD align="right"> 5 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 3.60 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD align="right"> 5.40 </TD> <TD align="right"> 3.90 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD align="right"> 4.60 </TD> <TD align="right"> 3.40 </TD> </TR>
    </TABLE>
 
 
@@ -193,8 +200,8 @@ Get all rows and the first two columns
 ------------
 5. What is the 9th entry of the Sepal.Width column? Call it x.
 6. How would you get all entries of iris for the 17th row?
-7. Return an object with the 1 4 and 7 rows of the iris dataframe?
-8. Use the seq command to get all odd rows in the iris dataset?
+7. Return an object with the 1st, 4th and 7th rows of the iris dataframe?
+8. Use the seq function to get all odd rows in the iris dataset?
 9. What happens when you use negative numbers? *Hint* Use *dim()* on the original and final objects. 
 
 ---
@@ -228,7 +235,7 @@ a <- iris[logi, ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -243,29 +250,14 @@ a <- iris[logi, ]
 ---
 More Subsets
 ====
-
-
-```r
-# Return all columns based on iris$Petal.Width values are greater than 1?
-a <- iris[iris$Petal.Width > 1, ]
-```
-
-
-
-```r
-a <- iris[, 1:2]
-# Return the same column as was subsetted.
-head(x[logi])
-```
-
-```
-## [1] 1.4 1.5 1.5 1.3 1.5 1.3
-```
-
-
 Return a different column based on the subset
 
+
 ```r
+# Which values are greater than 1?
+x <- iris$Petal.Width
+logi <- x > 1
+
 # Return all values in Sepal.Length where Sepal.Width is greater than 1.
 head(iris[logi, "Petal.Length"])
 ```
@@ -301,7 +293,7 @@ Only4 <- iris[iris$Petal.Length == 4, ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 54 </TD> <TD align="right"> 5.50 </TD> <TD align="right"> 2.30 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 1.30 </TD> <TD> versicolor </TD> </TR>
@@ -323,7 +315,7 @@ Vers_Only <- iris[iris$Species == "versicolor", ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>
@@ -349,7 +341,7 @@ subsetX <- iris[iris$Petal.Length > 4 & iris$Species == "versicolor", ]
 
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Jan 25 14:28:28 2014 -->
+<!-- Mon Feb 10 13:44:41 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Sepal.Length </TH> <TH> Sepal.Width </TH> <TH> Petal.Length </TH> <TH> Petal.Width </TH> <TH> Species </TH>  </TR>
   <TR> <TD align="right"> 51 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 3.20 </TD> <TD align="right"> 4.70 </TD> <TD align="right"> 1.40 </TD> <TD> versicolor </TD> </TR>

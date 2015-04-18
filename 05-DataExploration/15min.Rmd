@@ -5,6 +5,8 @@ Choose one of the following challenges.
 1. Create a paneled ggplot figure using facet_wrap() that shows the allometric relationship between mass and wingchord for each clade. Add a **linear** smoothing line following the instructions in stat_smooth()
 
 ```{r}
+traits<-read.csv("C:/Users/Ben/Desktop/Traits.csv")
+require(ggplot2)
 #Create new column for the w/m ratio
 traits$w_m<-traits$WingChord/traits$Mass
 
